@@ -6,13 +6,13 @@ import { Outlet } from 'react-router-dom';
 const UserLayout = () => {
     return (
         <div className="flex h-screen bg-gray-100">
-            <aside className="w-64 bg-white shadow-md flex-shrink-0">
+            <aside className="w-64 bg-white shadow-md flex-shrink-0 z-10">
                 <UserSideBar />
             </aside>
 
             <div className="flex-1 flex flex-col">
                 <header className="bg-white shadow-md 
-                z-10 w-full">
+                w-full">
                     <UserDashboardHeader />
                 </header>
 

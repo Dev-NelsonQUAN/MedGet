@@ -54,7 +54,7 @@ const PharmSignUp = () => {
                 confirmButtonText: 'OK'
             });
             reset();
-            Nav(`/pharmacyVerification/${token}`);
+            Nav(`/check-email`);
         } catch (err) {
             Swal.fire({
                 title: 'Sign Up Failed!',

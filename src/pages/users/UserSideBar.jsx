@@ -11,21 +11,24 @@ import {
 import { GiMedicines } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
-const PharmacySideBar = () => {
+const UserSideBar = () => {
     const sideBarData = [
         {
             title: 'Dashboard',
             icon: <FaHome />,
-            link: '/userDashboard/home',
+            link: '/user-dashboard/home',
         },
+        // {
+        //     title: 'Pharmacies',
+        //     icon: <FaStore />,
+        //     link: '/user-dashboard/pharmacies',
+        // }, 
         {
-            title: 'Pharmacies',
-            icon: <FaStore />,
-            link: '/userDashboard/pharmacies',
-        }, {
+
+
             title: 'Medicines',
             icon: <GiMedicines />,
-            link: '/userDashboard/medicines',
+            link: '/user-dashboard/medicines',
         },
         // {
         //     title: 'Reports',
@@ -37,20 +40,20 @@ const PharmacySideBar = () => {
         //     icon: <FaClipboardList />,
         //     link: '/userDashboard/auditlogs',
         // },
-        {
-            title: 'Hospitals',
-            icon: <FaHospital />,
-            link: '/userDashboard/hospitals',
-        },
-        {
-            title: 'Documents',
-            icon: <FaFileAlt />,
-            link: '/userDashboard/documents',
-        },
+        // {
+        //     title: 'Hospitals',
+        //     icon: <FaHospital />,
+        //     link: '/user-dashboard/hospitals',
+        // },
+        // {
+        //     title: 'Documents',
+        //     icon: <FaFileAlt />,
+        //     link: '/user-dashboard/documents',
+        // },
         {
             title: 'Settings',
             icon: <FaCog />,
-            link: '/userDashboard/settings',
+            link: '/user-dashboard/settings',
         },
     ];
 
@@ -79,4 +82,4 @@ const PharmacySideBar = () => {
     )
 }
 
-export default PharmacySideBar
+export default UserSideBar

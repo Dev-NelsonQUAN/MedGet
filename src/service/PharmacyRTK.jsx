@@ -1,12 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const pharmacyApi = createApi({
-  reducerPath: 'pharmacyApi',
+export const pharmacySlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:7399/api/pharmacies', // Adjust base URL
+    baseUrl: 'http://localhost:7399/api/pharmacies',
+    prepareHeaders: (headers, { getState }) => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
   }),
+
+
+  reducerPath: 'pharmacyApi',
+  tagTypes: ["pharmacies"],
   endpoints: (builder) => ({
-    // Register Pharmacy
     registerPharmacy: builder.mutation({
       query: (pharmacyData) => ({
         url: '/register',
@@ -16,11 +25,13 @@ export const pharmacyApi = createApi({
     }),
 
     verifyPharmacy: builder.query({
-        query: (token) => `/verify/${token}`, // No need to specify GET explicitly
+      query: (token) => ({
+        url: `/pharm-verify?token=${token}`,
+        // url: `/verify?token=${token}`,
+        method: 'GET',
+      }),
     }),
-      
 
-    // Login Pharmacy
     loginPharmacy: builder.mutation({
       query: (loginData) => ({
         url: '/login',
@@ -29,7 +40,6 @@ export const pharmacyApi = createApi({
       }),
     }),
 
-    // Resend Verification Email
     resendVerificationEmail: builder.mutation({
       query: (emailData) => ({
         url: '/resend-verification-email',
@@ -42,7 +52,7 @@ export const pharmacyApi = createApi({
 
 export const {
   useRegisterPharmacyMutation,
-  useVerifyPharmacyMutation,
+  useVerifyPharmacyQuery,
   useLoginPharmacyMutation,
   useResendVerificationEmailMutation,
-} = pharmacyApi;
+} = pharmacySlice;

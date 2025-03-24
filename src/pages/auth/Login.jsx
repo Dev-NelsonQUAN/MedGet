@@ -40,10 +40,11 @@ const Login = () => {
         setLoading(true);
         try {
             const response = await loginUser(data).unwrap();
-            const { data: user, token } = response;  token
+            const { data: user, token } = response;
 
             dispatch(setUser(user)); 
             dispatch(setToken(token)); 
+            console.log(token)
 
             Swal.fire({
                 title: 'Login Successful!',
@@ -52,7 +53,8 @@ const Login = () => {
                 confirmButtonText: 'OK',
             });
             console.log(data);
-            Nav('/userDashboard/home');
+            Nav('/user-dashboard');
+            // Nav('/user-dashboard/home');
         } catch (err) {
             console.error('Login error:', err);
             let errorMessage = 'Login Failed! Invalid username or password.';
@@ -100,7 +102,7 @@ flex justify-center items-center max-[576px]:px-10
                 >
                     <h1
                         className="font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center
-                    "
+"
                     >
                         {' '}
                         Login account{' '}
@@ -172,7 +174,7 @@ flex justify-center items-center max-[576px]:px-10
                     <p className="text-blue-600 hover:underline font-bold
 cursor-pointer justify-self-end max-[576px]:text-[12px]
 ">
-                        Forgot password?
+                        {/* Forgot password? */}
                     </p>
 
                     <Btn

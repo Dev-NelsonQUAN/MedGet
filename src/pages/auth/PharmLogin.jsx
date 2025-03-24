@@ -38,9 +38,10 @@ const PharmLogin = () => {
                 confirmButtonText: 'OK'
             });
             console.log(res)
-            Nav('/pharmacydashboard')
+            Nav('/pharmacy-dashboard/home')
         }
         catch (err) {
+            console.log(err)
             Swal.fire({
                 title: 'Login Failed!',
                 text:   err?.data?.message ||'Invalid username or password.',
