@@ -2,16 +2,13 @@ import React from 'react'
 import {
     FaHome,
     FaHospital,
-    FaFileAlt,
-    FaChartLine,
     FaCog,
-    FaClipboardList,
     FaStore,
 } from 'react-icons/fa';
 import { GiMedicines } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
-const PharmacySideBar = () => {
+const UserSideBar = () => {
     const sideBarData = [
         {
             title: 'Dashboard',
@@ -22,30 +19,16 @@ const PharmacySideBar = () => {
             title: 'Pharmacies',
             icon: <FaStore />,
             link: '/userDashboard/pharmacies',
-        }, {
+        }, 
+        {
             title: 'Medicines',
             icon: <GiMedicines />,
             link: '/userDashboard/medicines',
         },
-        // {
-        //     title: 'Reports',
-        //     icon: <FaChartLine />,
-        //     link: '/userDashboard/reports',
-        // },
-        // {
-        //     title: 'Audit Logs',
-        //     icon: <FaClipboardList />,
-        //     link: '/userDashboard/auditlogs',
-        // },
         {
             title: 'Hospitals',
             icon: <FaHospital />,
             link: '/userDashboard/hospitals',
-        },
-        {
-            title: 'Documents',
-            icon: <FaFileAlt />,
-            link: '/userDashboard/documents',
         },
         {
             title: 'Settings',
@@ -79,4 +62,4 @@ const PharmacySideBar = () => {
     )
 }
 
-export default PharmacySideBar
+export default UserSideBar

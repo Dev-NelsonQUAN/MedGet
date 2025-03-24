@@ -1,51 +1,35 @@
 import React, { useState } from 'react';
-import SideBar from '../pages/pharmacy/PharmacySideBar';
-import DashboardHeader from '../pages/pharmacy/PharmacyDashboardHeader';
-import { Outlet } from 'react-router-dom';
+import PharmacySideBar from '../pages/pharmacy/PharmacySideBar';
+import PharmacyDashboardHeader from '../pages/pharmacy/PharmacyDashboardHeader';
 
-const PharmacyDashboard = ({ pharmacy }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Dashboard = () => {
+    const [showSidebar, setShowSidebar] = useState(false);
 
-  // Function to toggle sidebar open/close
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+    const toggleSidebar = () => {
+        setShowSidebar(!showSidebar);
+    };
 
-  return (
-    <div className="h-screen bg-gray-100 relative">
-      {/* Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 h-full w-64 z-50 transition-transform duration-300 ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0`}
-      >
-        <SideBar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      </aside>
+    return (
+        <div className="flex h-screen bg-gray-100">
+            {/* Sidebar */}
+            <div
+                className={`fixed top-0 left-0 h-full z-40 bg-blue-600 text-white transform ${
+                    showSidebar ? 'translate-x-0' : '-translate-x-full'
+                } transition-transform duration-300 w-64 lg:translate-x-0 lg:static lg:block`}
+            >
+                <PharmacySideBar toggleSidebar={toggleSidebar} />
+            </div>
 
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0  opacity-50 z-40 lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-
-      {/* Main Content */}
-      <div className="flex flex-col min-h-screen">
-        {/* Header */}
-        <div className="fixed w-full z-30">
-          <DashboardHeader pharmacy={pharmacy} toggleSidebar={toggleSidebar} />
+            {/* Main Content */}
+            <div className={`flex flex-col flex-1 transition-all duration-300 w-full`}>
+                <PharmacyDashboardHeader toggleSidebar={toggleSidebar} />
+                <main className="flex-1 overflow-y-auto p-6">
+                    {/* Dashboard Content */}
+                </main>
+            </div>
         </div>
-
-        {/* Push content down below header */}
-        <div className="pt-16 flex-1 flex">
-          {/* Main Content Area */}
-          <main className="flex-1 ml-0 lg:ml-64 p-6">
-            <Outlet />
-          </main>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default PharmacyDashboard;
+export default Dashboard;
 
