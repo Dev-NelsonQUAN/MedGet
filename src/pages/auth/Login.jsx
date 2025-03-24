@@ -99,8 +99,7 @@ flex justify-center items-center max-[576px]:px-10
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     <h1
-                        className="font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center
-                    "
+                        className="font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center"
                     >
                         {' '}
                         Login account{' '}

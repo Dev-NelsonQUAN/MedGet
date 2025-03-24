@@ -20,24 +20,31 @@ import missionPht2 from "../../assets/433.jpg";
 import missionPht3 from "../../assets/43715.jpg";
 import { useNavigate } from "react-router-dom";
 import heroimg from "../../assets/2650.jpg";
+import Nelson from '../../assets/7317107.jpg';
+import footerlogo from '../../assets/MedgetLogoNoBG2.png'
+import headerlogowhite from '../../assets/MedgetLogoNoBG2.png'
+import headerlogoblue from '../../assets/MedgetLogoNoBG1.png'
+
 
 const LandingPage = () => {
   const Nav = useNavigate();
   const [navBg, setNavBg] = useState("bg-blue-700 text-white");
   const [btnStyle, setBtnStyle] = useState(
-    "bg-white text-blue-500 hover:bg-blue-500 hover:text-white border-none"
-  );
+    "bg-white text-blue-500 hover:bg-blue-500 hover:text-white border-none");
+  const [logoSrc, setLogoSrc] = useState(headerlogowhite);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setNavBg("bg-white shadow-md text-blue-700");
         setBtnStyle("bg-blue-700 text-white hover:bg-blue-800");
+        setLogoSrc(headerlogoblue)
       } else {
         setNavBg("bg-blue-700 text-white");
         setBtnStyle(
           "bg-white text-blue-500 hover:bg-blue-500 hover:text-white"
         );
+        setLogoSrc(headerlogowhite)
       }
     };
 
@@ -52,10 +59,18 @@ const LandingPage = () => {
   return (
     <div className="w-full min-h-screen bg-gray-50">
       <nav
-        className={`fixed top-0 left-0 w-full p-4 flex justify-between items-center transition-all duration-300 ${navBg} z-50`}
+        className={`fixed top-0 left-0 w-full p-4 px-25 max-lg:px-10 max-sm:px-4 flex justify-between items-center transition-all duration-300 ${navBg} z-50`}
       >
-        <h1 className="text-2xl font-bold cursor-pointer">MedGet</h1>
-        <div className="hidden md:flex gap-6">
+        {/* <img src={headerlogo} className="text-2xl font-bold cursor-pointer"/> */}
+        <div className="flex items-center gap-4">
+          <img
+            src={logoSrc}
+            alt="Logo"
+            className="w-[130px] h-auto cursor-pointer transition-all duration-300"
+            onClick={() => scrollToSection("hero")}
+          />
+        </div>
+        <div className="hidden lg:flex gap-6">
           <button
             onClick={() => scrollToSection("hero")}
             className="hover:text-blue-500"
@@ -102,15 +117,18 @@ const LandingPage = () => {
 
       <section
         id="hero"
-        className="bg-white text-blue-700 py-24 px-4 mt-16 flex flex-col md:flex-row items-center justify-between"
+        className="bg-white text-blue-700 py-24 px-25 max-lg:px-10 mt-16 flex flex-col md:flex-row items-center justify-between"
       >
         {/* Text Content */}
         <div className="text-center md:text-left md:w-1/2">
-          <h1 className="text-5xl font-bold mb-4 max-lg:text-4xl">
+          <h1 className="text-5xl font-bold mb-5 max-lg:text-4xl">
             Find & Manage Pharmacy Stock Easily
           </h1>
-          <p className="text-lg mb-6 max-lg:text-[16px]">
-            Locate nearby pharmacies and keep stock updated seamlessly.
+          <p className="text-[15px] mb-2 max-lg:text-[16px]">
+            Effortlessly locate nearby pharmacies, check medicine availability, and update stock. Smart healthcare for pharmacies and customers.
+          </p>
+          <p className="text-[15px] mb-6 max-lg:text-[16px]">
+            Our app prevents wasted trips and out-of-stock surprises; connecting pharmacies and customers instantly.
           </p>
           <div className="flex justify-center md:justify-start gap-4">
             <CTAButton
@@ -130,7 +148,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="about" className="py-16 px-6 bg-white-400">
+      <section id="about" className="py-16 px-25 bg-white-400 max-lg:px-10">
         <div className="container mx-auto flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2">
             <img
@@ -148,15 +166,15 @@ const LandingPage = () => {
               helps users find the nearest pharmacies and allows pharmacies to
               efficiently manage their stock.
             </p>
-            <CTAButton
+            {/* <CTAButton
               text="Learn More"
               className="mt-6 px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800 transition"
-            />
+            /> */}
           </div>
         </div>
       </section>
 
-      <section id="mission" className="bg-gray-100 text-center py-16 px-6">
+      <section id="mission" className="bg-gray-100 text-center py-16 px-25 max-lg:px-10">
         <h2 className="text-3xl font-bold mb-4 text-blue-700">Our Mission</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <MissionItem
@@ -174,23 +192,23 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="services" className="py-16 px-6 text-center bg-white">
+      <section id="services" className="py-16 px-25 max-lg:px-10 text-center bg-white">
         <h2 className="text-3xl font-bold mb-8 text-blue-700">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
             icon={FaCapsules}
             title="Pharmacy Locator"
-            description="Easily find the nearest pharmacy with our advanced search and location-based system. Users can quickly locate verified pharmacies in their vicinity, ensuring they have access to essential medicines when they need them most. This feature eliminates the stress of visiting multiple pharmacies in search of a specific medication, saving time and improving convenience."
+            description="Easily find the nearest pharmacy with our advanced search and location-based system. Users can quickly locate verified pharmacies in their vicinity"
           />
           <FeatureCard
             icon={FaWarehouse}
             title="Inventory Management"
-            description="Pharmacies can manage their stock efficiently using our digital tools. Our system provides real-time tracking of medicine availability, low-stock alerts, and automated inventory updates. This prevents stockouts, minimizes overstocking, and helps pharmacies optimize their inventory levels. By ensuring that medicines are always available when needed, pharmacies can build customer trust and improve overall healthcare services."
+            description="Pharmacies can manage their stock efficiently using our digital tools. Our system provides real-time tracking of medicine availability, low-stock alerts, and automated inventory updates"
           />
           <FeatureCard
             icon={FaClipboardList}
             title="Order Tracking"
-            description="Users can check the availability of medicines before heading to a pharmacy. This feature allows customers to verify if a pharmacy has their required medicine in stock, reducing wasted trips and enhancing customer satisfaction. For pharmacies, this improves customer service and streamlines operations by reducing inquiries about unavailable medicines."
+            description="Users can check the availability of medicines before heading to a pharmacy. This feature allows customers to verify if a pharmacy has their required medicine in stock, and reduce wasted trips and enhancing customer satisfaction"
           />
         </div>
 
@@ -204,12 +222,16 @@ const LandingPage = () => {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <FeatureCard
-              className="bg-white text-xl p-6 text-blue-700 shadow-md rounded-lg text-center"
+              // className="bg-white text-xl p-6 text-blue-700 shadow-md rounded-lg text-center"
+              showimg={true}
+              image={Nelson}
               title="Quadri Nelson"
               description="An expert in healthcare technology, committed to improving pharmacy services through innovation with a tech driven mindset."
             />
             <FeatureCard
-              className="bg-white text-xl p-6 text-blue-700 shadow-md rounded-lg text-center"
+              // className="bg-white text-xl p-6 text-blue-700 shadow-md rounded-lg text-center"
+              showimg={true}
+              image={Nelson}
               title="Ugwu Chinedu"
               description="A tech-driven entrepreneur focused on making medicine more accessible to users and pharmacies."
             />
@@ -217,28 +239,28 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="blogs" className="bg-gray-100 text-center py-16 px-6">
+      <section id="blogs" className="bg-gray-100 text-center py-16 px-25 max-lg:px-10">
         <h2 className="text-3xl font-bold mb-8 text-blue-700">Blogs</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <FeatureCard
             icon={FaNewspaper}
             title="Optimizing Pharmacy Stock Management"
-            description="Pharmacy stock management is a critical aspect of running a successful pharmacy. By using digital tools like MedGet, pharmacies can track stock levels in real time, receive automated low-stock alerts, and streamline the restocking process. Proper inventory management ensures that essential medicines are always available for customers, preventing shortages that could impact patient care. Additionally, efficient stock control reduces the risk of overstocking, which can lead to financial losses due to expired medications."
+            description="Effective pharmacy stock management using tools like MedGet ensures real-time stock tracking, low-stock alerts, and efficient restocking, preventing shortages to maintain patient care and minimize financial losses."
           />
           <FeatureCard
             icon={FaNewspaper}
             title="How MedGet Enhances Pharmacy Accessibility"
-            description="Finding a pharmacy with the right medicine can be challenging, especially in urgent situations. MedGet bridge this gap by connecting users to the nearest verified pharmacies, allowing them to check real-time stock availability before visiting. This feature not only saves time but also improves healthcare efficiency by ensuring that users can access life-saving medications without unnecessary delays. Furthermore, pharmacies that list their stock on MedGet increase their visibility, attracting more customers and boosting sales."
+            description="MedGet connects users to nearby pharmacies, enabling real-time stock checks and quick access to essential medications, benefiting both users and pharmacies."
           />
           <FeatureCard
             icon={FaNewspaper}
             title="The Role of Data Analytics in Pharmacy Operations"
-            description="In the modern healthcare industry, data-driven decision-making is essential for optimizing operations. With real-time analytics and insights, pharmacies can identify trends in medicine demand, adjust pricing strategies, and optimize restocking schedules. MedGet provides pharmacies with detailed reports that help them track sales patterns, identify seasonal fluctuations in demand, and make informed purchasing decisions. By leveraging data analytics, pharmacies can improve efficiency, reduce waste, and enhance customer satisfaction."
+            description="Data-driven decision-making in healthcare, aided by real-time analytics, enables pharmacies to optimize operations by adjusting pricing strategies, identifying trends, and making informed purchasing decisions."
           />
         </div>
       </section>
 
-      <section id="contact" className="bg-gray-200 text-center py-16 px-6">
+      <section id="contact" className="bg-gray-200 text-center py-16 px-25 max-lg:px-10">
         <h2 className="text-3xl font-bold mb-6 text-blue-700">
           Need Assistance?
         </h2>
@@ -262,44 +284,51 @@ const LandingPage = () => {
         <h2 className="text-2xl font-bold mb-4">Join MedGet Today!</h2>
       </section>
 
-      <footer className="bg-blue-950 text-white p-8">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold">MedGet</h2>
-            <p className="mt-2">
-              Your trusted pharmacy locator & stock management system.
-            </p>
-            <div className="flex gap-4 mt-4 justify-center md:justify-start">
-              <FaFacebookF className="text-xl" />
-              <FaTwitter className="text-xl" />
-              <FaYoutube className="text-xl" />
-              <FaInstagram className="text-xl" />
-              <FaLinkedin className="text-xl" />
+      <footer className="bg-blue-950 text-white py-8">
+        <div className=" mx-auto px-4 md:px-11 lg:px-25 xl:px-25 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center md:text-left flex flex-col items-center md:items-start">
+              <img src={footerlogo} className="w-[140px]" alt="Footer Logo" />
+              <p className="mt-2 max-w-xs text-center md:text-left">
+                Your trusted pharmacy locator & stock management system.
+              </p>
+              <div className="flex gap-4 mt-4 justify-center md:justify-start">
+                <FaFacebookF className="text-xl" />
+                <FaTwitter className="text-xl" />
+                <FaYoutube className="text-xl" />
+                <FaInstagram className="text-xl" />
+                <FaLinkedin className="text-xl" />
+              </div>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-lg font-semibold">Company</h3>
+              <ul className="mt-2 space-y-2">
+                <li>About Us</li>
+                <li>Careers</li>
+                <li>Articles & News</li>
+                <li>Legal Notice</li>
+              </ul>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-lg font-semibold">Support</h3>
+              <ul className="mt-2 space-y-2">
+                <li>Help Center</li>
+                <li>My Account</li>
+                <li>FAQ</li>
+                <li>Contact Us</li>
+              </ul>
             </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold">Company</h3>
-            <ul className="mt-2 space-y-2">
-              <li>About Us</li>
-              <li>Careers</li>
-              <li>Articles & News</li>
-              <li>Legal Notice</li>
-            </ul>
+
+          <div className="text-center mt-8 border-t border-gray-700 pt-4 text-sm">
+            &copy; {new Date().getFullYear()} MedGet. All rights reserved.
           </div>
-          <div>
-            <h3 className="text-lg font-semibold">Support</h3>
-            <ul className="mt-2 space-y-2">
-              <li>Help Center</li>
-              <li>My Account</li>
-              <li>FAQ</li>
-              <li>Contact Us</li>
-            </ul>
-          </div>
-        </div>
-        <div className="text-center mt-8 border-t border-gray-700 pt-4">
-          &copy; {new Date().getFullYear()} MedGet. All rights reserved.
         </div>
       </footer>
+
+
     </div>
   );
 };
