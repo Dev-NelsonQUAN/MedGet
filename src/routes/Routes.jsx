@@ -4,10 +4,8 @@ import SignUp from '../pages/auth/SignUp'
 import Login from '../pages/auth/Login'
 import AdminDashboard from '../layout/AdminDashboardLayout'
 import PharmacyDashboard from '../layout/PharmacyDashboardLayout'
-import PharmacyDashboardHome from '../pages/pharmacy/PharmacyDashboardHome'
+// import PharmacyDashboardHome from '../pages/pharmacy/PharmacyDashboardHome'
 import DashboardHome from '../components/DashboardHome'
-import AddMedicine from "../pages/pharmacy/outlet/Addmedicine"
-import MedicineList from "../pages/pharmacy/outlet/MedicineList"
 import UserDashboardHome from '../pages/users/UserDashboardHome'
 import LandingPage from "../pages/Landing/LandingPage"
 import SelectionPage from "../pages/Landing/SelectionPage"
@@ -151,7 +149,30 @@ const router = createBrowserRouter([
             {
                 path: 'view',
                 element: <MedicineList />
+            },
+            {
+                path: "medicine",
+                element: <UserdashboardMedicine />
+            },
+            {
+                path: "settings",
+                element: <UserDashboardSetting />
             }
+            // {
+            //     path: 'drugs',
+            //     element: 
+            // }
+        ]
+
+    },
+    {
+        path: "/pharmacydashboard",
+        element: <PharmacyDashboard/>,
+        children: [
+            // {
+            //     path: "homes",
+            //     element : <PharmacyDashboardHome/>
+            // }
         ]
     },
     {

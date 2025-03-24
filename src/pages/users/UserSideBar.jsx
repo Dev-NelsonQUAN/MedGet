@@ -2,16 +2,13 @@ import React from 'react'
 import {
     FaHome,
     FaHospital,
-    FaFileAlt,
-    FaChartLine,
     FaCog,
-    FaClipboardList,
     FaStore,
 } from 'react-icons/fa';
 import { GiMedicines } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
-const UserSideBar = () => {
+const PharmacySideBar = () => {
     const sideBarData = [
         {
             title: 'Dashboard',
