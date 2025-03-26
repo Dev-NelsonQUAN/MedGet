@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useVerifyUserQuery } from '../../service/UserRTK';
 import Swal from 'sweetalert2';
+import Spinner from '../../ui/Spinner';
 
 const Verification = () => {
     const location = useLocation();
@@ -43,7 +44,8 @@ const Verification = () => {
     console.log(error)
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div
+            className='flex justify-center item-center h-screen w-screen'>Loading...</div>;
     }
 
     if (isSuccess) {
@@ -51,17 +53,29 @@ const Verification = () => {
     }
 
     return (
-        <div className='flex justify-center item-center'>
+        <div className='flex justify-center item-center h-screen w-screen'>
             {isLoading ? (
-                <h1>Verifying...</h1>
-            ) : (
-                <h1>Verification In Progress...</h1>
-            )}
-        </div>
-    );
+                <div>
+                    <h1 className='font-bold lg:text-3xl'>Verifying...</h1>
+                    <Spinner />
+                    <div className='flex justify-self-center mt-4'>
+                        <Spinner />
+                    </div>
+                    </div>
+                    ) : (
+                    <div >
+                        <h1 className='font-bold lg:text-3xl'>Verification in Progress...</h1>
+                        <div className='flex justify-self-center mt-4'>
+                            <Spinner />
+                        </div>
+                    </div>
+                    )
+            }
+                </div >
+            );
 };
 
-export default Verification;
+            export default Verification;
 
 
 

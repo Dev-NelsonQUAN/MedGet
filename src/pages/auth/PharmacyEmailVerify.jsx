@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useVerifyPharmacyMutation } from '../../service/PharmacyRTK';
+import { useVerifyPharmacyQuery} from '../../service/PharmacyRTK';
 
 const PharmacyVerification = () => {
   const { token } = useParams();
   const navigate = useNavigate();
-  const [verifyPharmacy, { isLoading, isSuccess, isError }] = useVerifyPharmacyMutation(token);
+  const [verifyPharmacy, { isLoading, isSuccess, isError }] = useVerifyPharmacyQuery(token);
 
   useEffect(() => {
     if (token) {

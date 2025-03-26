@@ -69,22 +69,12 @@ const CheckEmail = () => {
 
     return (
         <div className='flex lg:h-[100vh]'>
-            {/* <div className='bg-blue-600 w-[100%] flex p-2 max-[769px]:hidden flex-col'>
-                <h1 className='text-white font-bold mt-2 ml-10'>MedGet</h1>
-                <div className='flex justify-center mt-25'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100" height="100" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 12l-10 7-10-7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v7z"></path>
-                        <path d="M12 13l-8-5h16z"></path>
-                    </svg>
-                </div>
-            </div> */}
-
             <div className='bg-white w-[100%] h-[100vh] flex justify-center items-center lg:px-70  max-[576px]:px-10 max-[321px]:px-5'>
-                
-                <div className='shadow-2xl lg:px-[70px] lg:py-[40px] max-[769px]:p-[40px] max-[576px]:p-[25px] rounded-[5px] text-center'>
-                 <div className='flex justify-center mb-6'>
-                 <FaMailBulk size={50}/>
-                 </div>
+
+                <div className='shadow-2xl lg:px-[30px] lg:py-[40px] max-[769px]:p-[40px] max-[576px]:p-[25px] rounded-[5px] text-center'>
+                    <div className='flex justify-center mb-6'>
+                        <FaMailBulk size={50} />
+                    </div>
                     <h1 className='font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center leading-8 max-[321px]:text-[24px] mb-4'>
                         Check Your Email
                     </h1>
@@ -96,7 +86,7 @@ const CheckEmail = () => {
                         If you don't see it, check your spam folder or try resending the verification email.
                     </p>
 
-                    <div className='mt-6 flex justify-self-center'>
+                    {/* <div className='mt-6 flex justify-self-center'>
                         <Btn
                             type='button'
                             btnText={resendLoading ? <><Spinner size='1.5em' color='white' borderWidth='0.3em' /></> : "Resend Verification Email"}
@@ -110,7 +100,7 @@ const CheckEmail = () => {
                             disabled={resendLoading}
                             onClick={handleResendEmail}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
