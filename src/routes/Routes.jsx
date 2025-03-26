@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, createHashRouter, } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import SignUp from '../pages/auth/SignUp'
 import Login from '../pages/auth/Login'
 import AdminDashboard from '../layout/AdminDashboardLayout'
@@ -21,12 +21,13 @@ import UserdashboardMedicine from '../pages/users/UserdashboardMedicine'
 import ProfileSettings from '../pages/users/ProfileSettings'
 import PasswordSettings from '../pages/users/PasswordSettings'
 import ProfileDetails from '../pages/users/ProfileDetails'
-import UserPrivateRoue from '../pages/users/UserPrivateRoue'
 import { Error } from './Error'
 import PharmVerification from '../pages/auth/PharmVerification'
 import AdminDashboardUsers from '../pages/admin/AdminDashboardUsers'
 import AdminDashboardPharm from '../pages/admin/AdminDashboardPharm'
 import AdminDashboardLayout from '../pages/admin/AdminDashboardLayout'
+import UserPrivateRouting from '../pages/users/UserPrivateRouting'
+import AdminLogin from '../pages/auth/AdminLogin'
 
 const router = createBrowserRouter([
     {
@@ -78,15 +79,21 @@ const router = createBrowserRouter([
         element: <PharmLogin />
     },
     {
+        path: '/admin-login',
+        element: <AdminLogin />
+    },
+    {
         path: "/admin-dash",
         element: <AdminDashboardLayout />,
         children: [
+            // {
+            //     index: true,
+            //     // path: 'home',
+            //     element: <DashboardHome />
+            // },
             {
-                path: 'home',
-                element: <DashboardHome />
-            },
-            {
-                path: 'users',
+                index: true,
+                // path: 'users',
                 element: <AdminDashboardUsers />
             },
             {
@@ -95,9 +102,9 @@ const router = createBrowserRouter([
             },
         ]
     },
-//  {
-//     element: <UserPrivateRoue />,
-//     children: [
+ {
+    element: <UserPrivateRouting />,
+    children: [
         {
             path: "/user-dashboard",
             element: <UserLayout />,
@@ -132,24 +139,24 @@ const router = createBrowserRouter([
             ]
     
         },
-    // ]
-//  },
+    ]
+ },
     {
         path: "/pharmacy-dashboard",
         element: <PharmacyDashboard />,
         children: [
-            {
-                path: "home",
-                element: <PharmacyDashboardHome />
-            },
-            {
-                path: "add",
-                element: <AddMedicine />
-            },
-            {
-                path: 'view',
-                element: <MedicineList />
-            },
+            // {
+            //     path: "home",
+            //     element: <PharmacyDashboardHome />
+            // },
+            // {
+            //     path: "add",
+            //     element: <AddMedicine />
+            // },
+            // {
+            //     path: 'view',
+            //     element: <MedicineList />
+            // },
             {
                 path: "medicine",
                 element: <UserdashboardMedicine />

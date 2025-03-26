@@ -4,7 +4,9 @@ export const adminSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: `http://localhost:7399/api/admin`,
         prepareHeaders: (headers, { getState }) => {
-            const token = localStorage.getitem('token')
+            const token = getState()?.medGet?.token;
+
+            console.log("ReduxToken", token)
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`)
@@ -31,21 +33,31 @@ export const adminSlice = createApi({
             })
         }),
         getAllUsers: builder.query({
-            query: (token) => ({
-                url: '/getAllUsers',
-                method: 'GET',
-                token
-            })
-        }),
+            query: () => '/getAllUsers'
+            }),
+        // }),
+
+        // getAllUsers: builder.query({
+        //     query: (token) => ({
+        //         url: '/getAllUsers',
+        //         method: 'GET',
+        //         token
+        //     })
+        // }),
         getAllPharmacies: builder.query({
-            query: (token) => ({
-                query: '/getAllPharmacies',
-                method: 'GET',
-                token
+            query: () => '/getAllPharmacies',
             })
-        }),
+        // }),
         
-    })
+        // getAllPharmacies: builder.query({
+        //     query: (token) => ({
+        //         url: '/getAllPharmacies',
+        //         method: 'GET',
+        //         token
+        //     })
+        // }),
+        
+    }),
 })
 
 export const {

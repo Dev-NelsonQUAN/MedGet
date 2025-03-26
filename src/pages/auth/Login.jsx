@@ -102,9 +102,7 @@ flex justify-center items-center max-[576px]:px-10
                 >
                     <h1
                         className="font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center
-"
-                        className="font-bold lg:text-[40px] max-[769px]:text-[35px] max-[576px]:text-[25px] flex justify-self-center"
-                    >
+"                    >
                         {' '}
                         Login account{' '}
                     </h1>
@@ -191,7 +189,7 @@ cursor-pointer justify-self-end max-[576px]:text-[12px]
                         }
                         bg="bg-blue-600"
                         color="text-white"
-                        px="lg:px-45 max-[576px]:px-30 max-[321px]:px-25"
+                        px="lg:px-45 max-[769px]:px-40 max-[576px]:px-30 max-[321px]:px-25"
                         fontWeight="font-bold"
                         py="py-2.5"
                         mt="mt-8"

@@ -6,13 +6,11 @@ import Spinner from '../../ui/Spinner'
 const PharmVerification = () => {
     const Nav = useNavigate()
     const { token } = useParams()
-    console.log(token)
-    console.log("Next to token")
 
     const { data, error, isLoading, isSuccess } = useVerifyPharmacyQuery(token)
-    console.log(data)
-    console.log(error)
-    console.log("working")
+    // console.log(data)
+    // console.log(error)
+    // console.log("working")
 
     if (isLoading) {
         return <div cclassName='flex justify-center item-center h-screen w-screen'>Loading...</div>

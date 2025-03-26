@@ -4,7 +4,7 @@ export const userSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:7399/api/user',
         prepareHeaders: (headers, { getState }) => {
-            const token = localStorage.getItem('token');
+            const token = getState()?.medGet?.token;
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);
             }
@@ -61,7 +61,10 @@ export const userSlice = createApi({
             query: () => '/profile',
             providesTags: ['user'],
         }),
-    })
+        getAllPharms: builder.query({
+            query: () => '/getAllPharms'
+        })
+    }),
 });
 
 export const {
@@ -71,5 +74,6 @@ export const {
     useResendVerificationEmailMutation,
     useUpdateUserProfileMutation,
     useUpdateUserPasswordMutation,
-    useGetUserQuery
+    useGetUserQuery,
+    useGetAllPharmsQuery
 } = userSlice;

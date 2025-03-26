@@ -23,9 +23,11 @@ const medGetSlice = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload;
+            // state.token = action.payload.token;
         },
         setToken: (state, action) => {
-            state.token = action.payload;
+            state.action = action.payload
+            console.log('Set User Action Payload:', action.payload); 
         },
         setLocation: (state, action) => {
             state.location = action.payload;

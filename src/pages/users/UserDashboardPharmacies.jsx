@@ -1,47 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { useGetAllPharmaciesQuery, useGetNearbyPharmaciesQuery } from '../../service/MedicineRtk'; // Adjust the path if needed
+import { useGetAllPharmaciesQuery, useGetNearbyPharmaciesQuery } from '../../service/MedicineRtk';
 import { FaStore, FaMoneyBillAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 const UserDashboardPharmacies = () => {
-    const [userLocation, setUserLocation] = useState(null);
+    const {data: pharmacies, isloading, isError} = useGetAllPharmaciesQuery
 
-    const { data: allPharmacies, isLoading: allPharmaciesLoading, isError: allPharmaciesError } = useGetAllPharmaciesQuery();
-    const { data: nearbyPharmacies, isLoading: nearbyPharmaciesLoading, isError: nearbyPharmaciesError } = useGetNearbyPharmaciesQuery(userLocation, { skip: !userLocation });
+    console.log(pharmacies)
 
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    setUserLocation({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                    });
-                },
-                (error) => {
-                    console.error('Error getting location:', error);
-                    setUserLocation({ latitude: 34.0522, longitude: -118.2437 });
-                }
-            );
-        } else {
-            console.error('Geolocation is not supported by this browser.');
-            setUserLocation({ latitude: 34.0522, longitude: -118.2437 });
-        }
-    }, []);
+    if (isloading) {
+        <div> Loading... </div>
+    }
+
+    if (isError) {
+        <div>Error, loading pages... </div>
+    }
+
+
+    // const [userLocation, setUserLocation] = useState(null);
+
+    // const { data: allPharmacies, isLoading: allPharmaciesLoading, isError: allPharmaciesError } = useGetAllPharmaciesQuery();
+    // const { data: nearbyPharmacies, isLoading: nearbyPharmaciesLoading, isError: nearbyPharmaciesError } = useGetNearbyPharmaciesQuery(userLocation, { skip: !userLocation });
+
+    // useEffect(() => {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(
+    //             (position) => {
+    //                 setUserLocation({
+    //                     latitude: position.coords.latitude,
+    //                     longitude: position.coords.longitude,
+    //                 });
+    //             },
+    //             (error) => {
+    //                 console.error('Error getting location:', error);
+    //                 setUserLocation({ latitude: 34.0522, longitude: -118.2437 });
+    //             }
+    //         );
+    //     } else {
+    //         console.error('Geolocation is not supported by this browser.');
+    //         setUserLocation({ latitude: 34.0522, longitude: -118.2437 });
+    //     }
+    // }, []);
 
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) return text;
         return text.substring(0, maxLength) + '...';
     };
 
-    if (allPharmaciesLoading || nearbyPharmaciesLoading) {
-        return <p>Loading...</p>;
-    }
+    // if (allPharmaciesLoading || nearbyPharmaciesLoading) {
+    //     return <p>Loading...</p>;
+    // }
 
-    if (allPharmaciesError || nearbyPharmaciesError) {
-        return <p>Error fetching pharmacies.</p>;
-    }
+    // if (allPharmaciesError || nearbyPharmaciesError) {
+    //     return <p>Error fetching pharmacies.</p>;
+    // }
 
-    const pharmaciesToDisplay = nearbyPharmacies || allPharmacies || [];
+    const pharmaciesToDisplay = nearbyPharmacies || pharmacies || [];
 
     return (
         <div className="p-4 bg-white">
@@ -51,8 +64,8 @@ const UserDashboardPharmacies = () => {
                 <div className="bg-blue-600 text-white rounded-lg shadow p-4 flex items-center">
                     <FaStore className="mr-4 text-3xl" />
                     <div>
-                        <h2 className="text-lg font-semibold">Total Pharmacies</h2>
-                        <p className="text-3xl font-bold mt-2">{allPharmacies?.length || 0}</p>
+                     <h2 className="text-lg font-semibold">Total Pharmacies</h2>
+                        <p className="text-3xl font-bold mt-2">{pharmacies?.length || 0}</p>
                     </div>
                 </div>
 
@@ -117,7 +130,7 @@ const UserDashboardPharmacies = () => {
                 <p>No pharmacies found.</p>
             )}
         </div>
-    );
+    )
 };
 
 export default UserDashboardPharmacies;
