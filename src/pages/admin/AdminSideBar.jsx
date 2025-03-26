@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { clearUser } from '../../service/GlobalState';
 import { persistStore } from 'redux-persist';
 import store  from '../../service/store';
+import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
 
 const AdminSideBar = ({ toogleSidebar }) => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const AdminSideBar = ({ toogleSidebar }) => {
         {
             title: 'Pharmacies',
             icon: <FaStore />,
-            link: '/admin-dash/pharmacies',
+            link: '/admin-dash/get-all-pharmacies',
         },
         {
             title: 'Logout',
@@ -49,7 +50,11 @@ const AdminSideBar = ({ toogleSidebar }) => {
             </button>
 
             <div className="p-4 mt-4 lg:mt-10">
-                <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
+                {/* <h1 className="text-2xl font-bold mb-6">Admin Panel</h1>
+                 */}
+                 <div>
+                  <img src={medGetWhiteLogo} alt="MedGet Logo" />
+                 </div>
 
                 <nav className="pt-4 ">
                     <ul className="list-none">

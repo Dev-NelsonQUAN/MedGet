@@ -1,0 +1,6 @@
+{
+  "rewrites": [{ "source": "/verify/:token", "destination": "/" },
+  {"source": "/pharm-verify/:token", "destination": "/"}
+
+]
+}

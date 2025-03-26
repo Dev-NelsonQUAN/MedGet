@@ -26,7 +26,7 @@ const medGetSlice = createSlice({
             // state.token = action.payload.token;
         },
         setToken: (state, action) => {
-            state.action = action.payload
+            state.token = action.payload
             console.log('Set User Action Payload:', action.payload); 
         },
         setLocation: (state, action) => {

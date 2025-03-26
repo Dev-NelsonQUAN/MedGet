@@ -5,6 +5,9 @@ export const userSlice = createApi({
         baseUrl: 'http://localhost:7399/api/user',
         prepareHeaders: (headers, { getState }) => {
             const token = getState()?.medGet?.token;
+
+            console.log("LoginToken", token)
+
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);
             }

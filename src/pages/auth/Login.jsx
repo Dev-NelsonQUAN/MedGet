@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 import { useLoginUserMutation } from '../../service/UserRTK';
 import { useDispatch } from 'react-redux'; 
 import { setUser, setToken, setError } from "../../service/GlobalState"; 
+import store, { persistor } from '../../service/store';
+import { persistReducer, persistStore } from 'redux-persist';
 
 const Login = () => {
     const Nav = useNavigate();
@@ -44,7 +46,10 @@ const Login = () => {
 
             dispatch(setUser(user)); 
             dispatch(setToken(token)); 
-            console.log(token)
+            console.log("Redux state after dispatch", store.getState())
+
+            persistStore(store).purge(['medGet'])
+            persistor.flush()
 
             Swal.fire({
                 title: 'Login Successful!',

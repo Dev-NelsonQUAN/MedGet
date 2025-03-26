@@ -5,8 +5,10 @@ export const adminSlice = createApi({
         baseUrl: `http://localhost:7399/api/admin`,
         prepareHeaders: (headers, { getState }) => {
             const token = getState()?.medGet?.token;
+            const tokenTwo = getState()?.medGet?.action;
 
             console.log("ReduxToken", token)
+            console.log("Action", tokenTwo)
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`)
