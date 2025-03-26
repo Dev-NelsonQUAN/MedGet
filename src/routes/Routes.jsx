@@ -1,20 +1,34 @@
 import React from 'react'
-import { createHashRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import SignUp from '../pages/auth/SignUp'
 import Login from '../pages/auth/Login'
 import AdminDashboard from '../layout/AdminDashboardLayout'
+import PharmacyDashboard from '../layout/PharmacyDashboardLayout'
 import DashboardHome from '../components/DashboardHome'
-import Users from '../pages/admin/Users';
-import Pharmacies from '../pages/admin/Pharmacies';
-import UserLayout from '../pages/users'
 import UserDashboardHome from '../pages/users/UserDashboardHome'
 import LandingPage from "../pages/Landing/LandingPage"
 import SelectionPage from "../pages/Landing/SelectionPage"
 import PharmSignUp from '../pages/auth/PharmSignUp'
+import PharmLogin from '../pages/auth/PharmLogin'
 import CheckEmail from '../pages/auth/CheckEmail'
 import ContactPage from '../pages/Landing/ContactPage'
+import Verification from '../pages/auth/Verification'
+import PharmacyVerification from '../pages/auth/PharmacyEmailVerify'
+import UserLayout from '../pages/users/Dashboard'
+import UserDashboardSetting from '../pages/users/UserDashboardSetting'
+import UserdashboardMedicine from '../pages/users/UserdashboardMedicine'
+import ProfileSettings from '../pages/users/ProfileSettings'
+import PasswordSettings from '../pages/users/PasswordSettings'
+import ProfileDetails from '../pages/users/ProfileDetails'
+import { Error } from './Error'
+import PharmVerification from '../pages/auth/PharmVerification'
+import AdminDashboardUsers from '../pages/admin/AdminDashboardUsers'
+import AdminDashboardPharm from '../pages/admin/AdminDashboardPharm'
+import AdminDashboardLayout from '../pages/admin/AdminDashboardLayout'
+import UserPrivateRouting from '../pages/users/UserPrivateRouting'
+import AdminLogin from '../pages/auth/AdminLogin'
 
-const router = createHashRouter([
+const router = createBrowserRouter([
     {
         path: "/",
         element: <LandingPage />
@@ -25,7 +39,7 @@ const router = createHashRouter([
     },
     {
         path: "/contact",
-        element: <ContactPage/>
+        element: <ContactPage />
     },
     {
         path: "/sign-up",
@@ -36,6 +50,10 @@ const router = createHashRouter([
         element: <CheckEmail />
     },
     {
+        path: "/verify/:token",
+        element: <Verification />
+    },
+    {
         path: "/login",
         element: <Login />
     },
@@ -44,37 +62,93 @@ const router = createHashRouter([
         element: <PharmSignUp />
     },
     {
-        path: "/adminDash",
-        element: <AdminDashboard />,
+        path: '/pharmacy-verification/:token',
+        element: <PharmacyVerification />
+    },
+    {
+        path: "/pharm-verify/:token",
+        element: <PharmVerification />
+    },
+    {
+        path: '/pharmacy-login',
+        element: <PharmLogin />
+    },
+    {
+        path: '/admin-login',
+        element: <AdminLogin />
+    },
+    {
+        path: "/admin-dash",
+        element: <AdminDashboardLayout />,
         children: [
             {
-                path: 'home',
-                element: <DashboardHome />
+                index: true,
+                element: <AdminDashboardUsers />
             },
             {
-                path: 'users',
-                element: <Users />
-            },
-            {
-                path: 'pharmacies',
-                element: <Pharmacies />
+                path: 'get-all-pharmacies',
+                element: <AdminDashboardPharm />
             },
         ]
     },
     {
-        path: "/userDashboard",
-        element: <UserLayout />,
+        element: <UserPrivateRouting />,
         children: [
             {
-                path: 'home',
-                element: <UserDashboardHome />
+                path: "/user-dashboard",
+                element: <UserLayout />,
+                children: [
+                    {
+                        index: true,
+                        // path: '',
+                        element: <UserDashboardHome />
+                    },
+                    {
+                        path: "medicines",
+                        element: <UserdashboardMedicine />
+                    },
+                    {
+                        path: "user-details",
+                        element: <ProfileDetails />
+                    },
+                    {
+                        path: "settings",
+                        element: <UserDashboardSetting />,
+                        children: [
+                            {
+                                path: "profile",
+                                element: <ProfileSettings />
+                            },
+                            {
+                                path: "password",
+                                element: <PasswordSettings />
+                            }
+                        ]
+                    },
+                ]
+
             },
-            // {
-            //     path: 'drugs',
-            //     element: 
-            // }
+        ]
+    },
+    {
+        path: "/pharmacy-dashboard",
+        element: <PharmacyDashboard />,
+        children: [
+            {
+                index: true,
+                element: <UserdashboardMedicine />
+            },
+            {
+                path: "settings",
+                element: <UserDashboardSetting />
+            }
+
         ]
 
+    },
+    {
+        path: "*",
+        element: <Error />
     }
 ])
 

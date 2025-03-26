@@ -10,6 +10,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import CTAButton from "../../ui/CTAButton";
+import footerlogo from '../../assets/MedgetLogoNoBG2.png'
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 mt-10">
-      <div className="container mx-auto max-w-3xl bg-white p-8 shadow-md rounded-lg">
+      <div className="container mx-auto max-w-3xl bg-white mb-10 p-8 shadow-md rounded-lg">
         <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
           Contact Us
         </h2>
@@ -88,11 +89,11 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <footer className="bg-blue-950 text-white p-8 mt-20">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl font-bold">MedGet</h2>
-            <p className="mt-2">
+<footer className="bg-blue-950 text-white py-8 px-10 sm:px-12 md:px-16 lg:px-20 xl:px-25 max-lg:px-10 max-sm:px-4">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          <div>
+            <img src={footerlogo} className="w-[150px] mx-auto md:mx-0" />
+            <p className="mt-4 max-w-[250px] mx-auto md:mx-0 text-sm">
               Your trusted pharmacy locator & stock management system.
             </p>
             <div className="flex gap-4 mt-4 justify-center md:justify-start">
@@ -104,8 +105,8 @@ const ContactPage = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Company</h3>
-            <ul className="mt-2 space-y-2">
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <ul className="space-y-2 text-sm">
               <li>About Us</li>
               <li>Careers</li>
               <li>Articles & News</li>
@@ -113,8 +114,8 @@ const ContactPage = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold">Support</h3>
-            <ul className="mt-2 space-y-2">
+            <h3 className="text-lg font-semibold mb-4">Support</h3>
+            <ul className="space-y-2 text-sm">
               <li>Help Center</li>
               <li>My Account</li>
               <li>FAQ</li>
@@ -122,7 +123,7 @@ const ContactPage = () => {
             </ul>
           </div>
         </div>
-        <div className="text-center mt-8 border-t border-gray-700 pt-4">
+        <div className="max-w-[1200px] mx-auto text-center mt-8 border-t border-gray-700 pt-4 text-sm px-4">
           &copy; {new Date().getFullYear()} MedGet. All rights reserved.
         </div>
       </footer>

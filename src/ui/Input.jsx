@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Input = ({ labelText, htmlFor, type, placeholder, border, outline, px, py, pl, rounded, w, p, bg, borderCol, icon, onChange,value, name }) => {
-  console.log("Input component -  value", value)
-  console.log("Input component -  onChange", onChange)
+  // console.log("Input component -  value", value)
+  // console.log("Input component -  onChange", onChange)
 
   return (
     <div className='relative'>
