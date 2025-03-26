@@ -4,7 +4,6 @@ import SignUp from '../pages/auth/SignUp'
 import Login from '../pages/auth/Login'
 import AdminDashboard from '../layout/AdminDashboardLayout'
 import PharmacyDashboard from '../layout/PharmacyDashboardLayout'
-// import PharmacyDashboardHome from '../pages/pharmacy/PharmacyDashboardHome'
 import DashboardHome from '../components/DashboardHome'
 import UserDashboardHome from '../pages/users/UserDashboardHome'
 import LandingPage from "../pages/Landing/LandingPage"
@@ -50,10 +49,6 @@ const router = createBrowserRouter([
         path: "/check-email",
         element: <CheckEmail />
     },
-    // {
-    //     path: "/verification/verify:token",
-    //     element: <Verification />
-    // },
     {
         path: "/verify/:token",
         element: <Verification />
@@ -86,108 +81,74 @@ const router = createBrowserRouter([
         path: "/admin-dash",
         element: <AdminDashboardLayout />,
         children: [
-            // {
-            //     index: true,
-            //     // path: 'home',
-            //     element: <DashboardHome />
-            // },
             {
                 index: true,
-                // path: 'users',
                 element: <AdminDashboardUsers />
             },
             {
-                path: 'pharmacies',
+                path: 'get-all-pharmacies',
                 element: <AdminDashboardPharm />
             },
         ]
     },
- {
-    element: <UserPrivateRouting />,
-    children: [
-        {
-            path: "/user-dashboard",
-            element: <UserLayout />,
-            children: [
-                {
-                    index: true,
-                    // path: '',
-                    element: <UserDashboardHome />
-                },
-                {
-                    path: "medicines",
-                    element: <UserdashboardMedicine />
-                },
-                {
-                    path: "user-details",
-                    element: <ProfileDetails />
-                },
-                {
-                    path: "settings",
-                    element: <UserDashboardSetting />,
-                    children: [
-                        {
-                            path: "profile",
-                            element: <ProfileSettings />
-                        },
-                        {
-                            path: "password",
-                            element: <PasswordSettings />
-                        }
-                    ]
-                },
-            ]
-    
-        },
-    ]
- },
+    {
+        element: <UserPrivateRouting />,
+        children: [
+            {
+                path: "/user-dashboard",
+                element: <UserLayout />,
+                children: [
+                    {
+                        index: true,
+                        // path: '',
+                        element: <UserDashboardHome />
+                    },
+                    {
+                        path: "medicines",
+                        element: <UserdashboardMedicine />
+                    },
+                    {
+                        path: "user-details",
+                        element: <ProfileDetails />
+                    },
+                    {
+                        path: "settings",
+                        element: <UserDashboardSetting />,
+                        children: [
+                            {
+                                path: "profile",
+                                element: <ProfileSettings />
+                            },
+                            {
+                                path: "password",
+                                element: <PasswordSettings />
+                            }
+                        ]
+                    },
+                ]
+
+            },
+        ]
+    },
     {
         path: "/pharmacy-dashboard",
         element: <PharmacyDashboard />,
         children: [
-            // {
-            //     path: "home",
-            //     element: <PharmacyDashboardHome />
-            // },
-            // {
-            //     path: "add",
-            //     element: <AddMedicine />
-            // },
-            // {
-            //     path: 'view',
-            //     element: <MedicineList />
-            // },
             {
-                path: "medicine",
+                index: true,
                 element: <UserdashboardMedicine />
             },
             {
                 path: "settings",
                 element: <UserDashboardSetting />
             }
-            // {
-            //     path: 'drugs',
-            //     element: 
-            // }
+
         ]
 
     },
     {
-        path: "/pharmacydashboard",
-        element: <PharmacyDashboard/>,
-        children: [
-            // {
-            //     path: "homes",
-            //     element : <PharmacyDashboardHome/>
-            // }
-        ]
-    },
-    {
         path: "*",
         element: <Error />
-            // <div className='flex justify-center items-center'>
-            //     <h1>MedGet is asking, are you lost?</h1>
-            // </div>
     }
 ])
 

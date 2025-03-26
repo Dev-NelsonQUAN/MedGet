@@ -12,6 +12,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { clearUser } from '../../service/GlobalState';
 import { persistStore } from 'redux-persist';
 import store from '../../service/store';
+import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
+
 
 const UserSideBar = ({ toogleSidebar }) => {
     const Nav = useNavigate()
@@ -67,7 +69,6 @@ const UserSideBar = ({ toogleSidebar }) => {
             title: 'Logout',
             icon: <CgLogOff />,
             action: handleLogout
-            // link: 
         }
     ];
 
@@ -78,15 +79,23 @@ const UserSideBar = ({ toogleSidebar }) => {
                 <IoClose />
             </button>
 
-            <div className="p-4 mt-4 lg:mt-10">
-                <h1 className="text-2xl font-bold mb-6">User Panel</h1>
+            <div className="px-4 lg:mt-8 max-[769px]:mt-4">
+                {/* <h1 className="text-2xl font-bold mb-6 cursor-pointer">User Panel</h1> */}
+                <div className='w-35 cursor-pointer pl-1.5' 
+                onClick={() => Nav("/")}
+                
+                >
+                    <img 
+                    // className='object-full'
+                    src={medGetWhiteLogo} alt="MedGet Logo" />
+                </div>
 
-                <nav className="pt-4">
+                <nav className="pt-6">
                     <ul className="list-none">
                         {sideBarData.map((item, index) => (
                             <li
                                 key={index}
-                                className="pl-2 py-3 hover:bg-white hover:text-blue-600 rounded-md cursor-pointer"
+                                className="pl-4 py-3.5 hover:bg-white hover:text-blue-600 rounded-md cursor-pointer"
                             >
                                 {
                                     item.action ?
