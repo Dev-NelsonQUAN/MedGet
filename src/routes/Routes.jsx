@@ -27,6 +27,7 @@ import AdminDashboardPharm from '../pages/admin/AdminDashboardPharm'
 import AdminDashboardLayout from '../pages/admin/AdminDashboardLayout'
 import UserPrivateRouting from '../pages/users/UserPrivateRouting'
 import AdminLogin from '../pages/auth/AdminLogin'
+import LocationSettings from '../pages/users/LocationSettings'
 
 const router = createBrowserRouter([
     {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
                             {
                                 path: "password",
                                 element: <PasswordSettings />
+                            },
+                            {
+                                path: "location",
+                                element: <LocationSettings />
                             }
                         ]
                     },

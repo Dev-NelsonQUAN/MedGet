@@ -12,6 +12,9 @@ const ProfileDetails = () => {
         }
     }, [user]);
 
+    console.log(user)
+    console.log(error)
+
     if (isLoading) {
         return <p>Loading...</p>;
     }
