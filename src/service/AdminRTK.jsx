@@ -2,13 +2,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const adminSlice = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: `http://localhost:7399/api/admin`,
+        baseUrl: import.meta.env.VITE_BASE_URL,
         prepareHeaders: (headers, { getState }) => {
             const token = getState()?.medGet?.token;
-            const tokenTwo = getState()?.medGet?.action;
+            // const tokenTwo = getState()?.medGet?.action;
 
             console.log("ReduxToken", token)
-            console.log("Action", tokenTwo)
+            // console.log("Action", tokenTwo)
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`)
@@ -22,20 +22,20 @@ export const adminSlice = createApi({
     endpoints: (builder) => ({
         signUpAdmin: builder.mutation({
             query: (body) => ({
-                url: '/createAdmin',
+                url: 'admin/createAdmin',
                 method: 'POST',
                 body
             }),
         }),
-            loginAdmin: builder.mutation({
+ loginAdmin: builder.mutation({
             query: (body) => ({
-                url: '/loginAdmin',
+                url: 'admin/loginAdmin',
                 method: 'POST',
                 body,
             })
         }),
         getAllUsers: builder.query({
-            query: () => '/getAllUsers'
+            query: () => 'admin/getAllUsers'
             }),
         // }),
 
@@ -47,7 +47,7 @@ export const adminSlice = createApi({
         //     })
         // }),
         getAllPharmacies: builder.query({
-            query: () => '/getAllPharmacies',
+            query: () => 'admin/getAllPharmacies',
             })
         // }),
         

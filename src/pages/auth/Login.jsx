@@ -10,16 +10,18 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import Spinner from '../../ui/Spinner';
 import Swal from 'sweetalert2';
 import { useLoginUserMutation } from '../../service/UserRTK';
-import { useDispatch } from 'react-redux'; 
-import { setUser, setToken, setError } from "../../service/GlobalState"; 
+import { useDispatch } from 'react-redux';
+import { setUser, setToken, setError } from "../../service/GlobalState";
 import store, { persistor } from '../../service/store';
-import { persistReducer, persistStore } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist'
+import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
+;
 
 const Login = () => {
     const Nav = useNavigate();
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -36,16 +38,16 @@ const Login = () => {
         resolver: yupResolver(validationSchema),
     });
 
-    const [loginUser, { isLoading: isLoginLoading }] = useLoginUserMutation(); 
-    
+    const [loginUser, { isLoading: isLoginLoading }] = useLoginUserMutation();
+
     const onSubmit = async (data) => {
         setLoading(true);
         try {
             const response = await loginUser(data).unwrap();
             const { data: user, token } = response;
 
-            dispatch(setUser(user)); 
-            dispatch(setToken(token)); 
+            dispatch(setUser(user));
+            dispatch(setToken(token));
             console.log("Redux state after dispatch", store.getState())
 
             persistStore(store).purge(['medGet'])
@@ -66,7 +68,7 @@ const Login = () => {
             if (err && err.data && err.data.message) {
                 errorMessage = err.data.message;
             }
-            dispatch(setError(errorMessage)); 
+            dispatch(setError(errorMessage));
 
             Swal.fire({
                 title: 'Login Failed!',
@@ -86,8 +88,15 @@ const Login = () => {
     return (
         <div className="flex lg:h-[100vh]">
             <div className="bg-blue-600 w-[100%] max-[769px]:hidden">
-                <p></p>
-                <div className="flex justify-center mt-40">
+                <div className='w-full flex justify-center mt-15 cursor-pointer'
+                    onClick={() => Nav('/sign-up')}
+                >
+                    <img
+                        className='w-45'
+                        src={medGetWhiteLogo} alt="Medget Logo" />
+                </div>
+
+                <div className="flex justify-center mt-4">
                     <img
                         className="transform scale-x-[-1]"
                         src={loginSvg}

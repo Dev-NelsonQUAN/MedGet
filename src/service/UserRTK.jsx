@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const userSlice = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:7399/api/user',
+        baseUrl: import.meta.env.VITE_BASE_URL,
         prepareHeaders: (headers, { getState }) => {
             const token = getState()?.medGet?.token;
 
@@ -20,52 +20,52 @@ export const userSlice = createApi({
     endpoints: (builder) => ({
         signUpUser: builder.mutation({
             query: (body) => ({
-                url: '/createuser',
+                url: 'user/createuser',
                 method: 'POST',
                 body
             }),
         }),
         loginUser: builder.mutation({
             query: (body) => ({
-                url: '/login',
+                url: 'user/login',
                 method: 'POST',
                 body
             })
         }),
         verifyUser: builder.query({
             query: (token) => ({
-                url: `/verify?token=${token}`,
+                url: `user/verify?token=${token}`,
                 method: 'GET'
             })
         }),
         resendVerificationEmail: builder.mutation({
             query: (email) => ({
-                url: '/resend-verification-email',
+                url: 'user/resend-verification-email',
                 method: 'POST',
                 body: { email }
             }),
         }),
         updateUserProfile: builder.mutation({
             query: (formData) => ({
-                url: '/profile',
-                method: 'PUT',
+                url: 'user/profile',
+                method: 'PATCH',
                 body: formData,
                 formData: true,
             }),
         }),
         updateUserPassword: builder.mutation({
             query: (body) => ({
-                url: '/password',
-                method: 'PUT',
+                url: 'user/password',
+                method: 'PATCH',
                 body,
             }),
         }),
         getUser: builder.query({
-            query: () => '/profile',
+            query: () => 'profile/getProfile',
             providesTags: ['user'],
         }),
         getAllPharms: builder.query({
-            query: () => '/getAllPharms'
+            query: () => 'user/getAllPharms'
         })
     }),
 });

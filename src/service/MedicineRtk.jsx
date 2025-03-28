@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const medicineApi = createApi({
     reducerPath: 'medicineApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:1234/api/medicines',
+        baseUrl: import.meta.env.VITE_BASE_URL,
         prepareHeaders: (headers, { getState }) => {
             const token = getState().auth.token;
             if (token) {
@@ -15,16 +15,16 @@ export const medicineApi = createApi({
     tagTypes: ['Medicines'],
     endpoints: (builder) => ({
         getMedicines: builder.query({
-            query: () => '/getallmedicines',
+            query: () => 'medicines/getallmedicines',
             providesTags: ['Medicines'],
         }),
         getMedicineById: builder.query({
-            query: (id) => `/getbyidmedicines/${id}`,
+            query: (id) => `medicines/getbyidmedicines/${id}`,
             providesTags: (result, error, id) => [{ type: 'Medicines', id }],
         }),
         createMedicine: builder.mutation({
             query: (formData) => ({
-                url: '/createmedicines',
+                url: 'medicines/createmedicines',
                 method: 'POST',
                 body: formData,
             }),
@@ -32,15 +32,15 @@ export const medicineApi = createApi({
         }),
         updateMedicine: builder.mutation({
             query: ({ id, formData }) => ({
-                url: `/updatemedicinesbyid/${id}`,
-                method: 'PUT', // Changed from PATCH to PUT for consistency
+                url: `medicines/updatemedicinesbyid/${id}`,
+                method: 'PATCH',
                 body: formData,
             }),
             invalidatesTags: (result, error, { id }) => [{ type: 'Medicines', id }],
         }),
         deleteMedicine: builder.mutation({
             query: (id) => ({
-                url: `/deletemedicines/${id}`,
+                url: `medicines/deletemedicines/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Medicines'],
