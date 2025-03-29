@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../../ui/Input';
 import Btn from '../../ui/Btn';
-import { useUpdateLocationMutation } from '../../service/UserRTK'; // Assuming you have this mutation
+// import { useUpdateLocationMutation } from '../../service/UserRTK'; 
 
 const LocationSettings = () => {
     const [locationData, setLocationData] = useState({
@@ -17,7 +17,7 @@ const LocationSettings = () => {
         longitude: '',
     });
 
-    const [updateLocation, { isLoading, isError, error, isSuccess }] = useUpdateLocationMutation();
+    // const [updateLocation, { isLoading, isError, error, isSuccess }] = useUpdateLocationMutation();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -188,8 +188,8 @@ const LocationSettings = () => {
                 p="p-2"
             />
 
-            {isError && <p className="text-red-500">{error?.data?.message || 'Failed to update location.'}</p>}
-            {isSuccess && <p className="text-green-500">Location updated successfully</p>}
+            {/* {isError && <p className="text-red-500">{error?.data?.message || 'Failed to update location.'}</p>}
+            {isSuccess && <p className="text-green-500">Location updated successfully</p>} */}
 
             <Btn
                 btnText={isLoading ? 'Saving...' : 'Save Location'}

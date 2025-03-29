@@ -14,32 +14,6 @@ const Verification = () => {
 
     console.log(token)
     const { data, error, isLoading, isSuccess } = useVerifyUserQuery(token);
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         if (data) {
-    //             console.log('User verified successfully', data);
-    //             Swal.fire({
-    //                 title: 'Verified!',
-    //                 text: 'Your email has been verified successfully. You can now log in.',
-    //                 icon: 'success',
-    //                 confirmButtonText: 'Okay',
-    //             }).then(() => {
-    //                 Nav('/login');
-    //             });
-    //         }
-
-    //         if (error) {
-    //             console.log(error)
-    //             Swal.fire({
-    //                 title: 'Error!',
-    //                 text: 'Verification failed. Please check your link or try again later.',
-    //                 icon: 'error',
-    //                 confirmButtonText: 'Try Again',
-    //             });
-    //         }
-    //     }, 1000); 
-    // }, []);
     console.log(data)
     console.log(error)
 
@@ -61,21 +35,21 @@ const Verification = () => {
                     <div className='flex justify-self-center mt-4'>
                         <Spinner />
                     </div>
+                </div>
+            ) : (
+                <div >
+                    <h1 className='font-bold lg:text-3xl'>Verification in Progress...</h1>
+                    <div className='flex justify-self-center mt-4'>
+                        <Spinner />
                     </div>
-                    ) : (
-                    <div >
-                        <h1 className='font-bold lg:text-3xl'>Verification in Progress...</h1>
-                        <div className='flex justify-self-center mt-4'>
-                            <Spinner />
-                        </div>
-                    </div>
-                    )
+                </div>
+            )
             }
-                </div >
-            );
+        </div >
+    );
 };
 
-            export default Verification;
+export default Verification;
 
 
 
@@ -137,56 +111,3 @@ const Verification = () => {
 // };
 
 // export default Verification;
-
-
-
-
-
-
-
-
-// // import React, { useEffect } from 'react'
-// // import { useLocation, useNavigate } from 'react-router-dom'
-// // import { useVerifyUserQuery } from '../../service/UserRTK'
-
-// // const Verification = () => {
-// //     // const dispatch = useDispatch()
-// //     const location = useLocation()
-// //     const Nav = useNavigate()
-
-// //     const query = new URLSearchParams(location.search)
-// //     const token = query.get('token')
-
-// //     const {data, error, isLoading} = useVerifyUserQuery(token, {
-// //         skip: !token
-// //     })
-
-// //     useEffect(() => {
-
-// //         if (data) {
-// //             console.log("User verified successfully", data)
-// //             Nav("/login")
-// //         }
-// //     }, [data, Nav])
-
-// //     if (isLoading) {
-// //         return <div>loading... </div>
-// //     }
-
-// //     if (error) {
-// //         return <div>Error: {error.message}</div>
-// //     }
-// //     return (
-// //         <div>
-// //             {data ? (
-// //                 <h1> Verification Successsful!!! </h1>
-
-// //             ) : (
-// //                 <h1>Verifying...</h1>
-// //             )}
-
-// //         </div>
-// //     )
-// // }
-
-// // export default Verification

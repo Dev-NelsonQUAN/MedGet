@@ -13,6 +13,7 @@ import Spinner from '../../ui/Spinner';
 import signupSvg from '../../assets/doctorvector.png';
 import { useDispatch } from 'react-redux';
 import { setUser, setError } from "../../service/GlobalState";
+import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
 
 const SignUp = () => {
   const Nav = useNavigate();
@@ -129,10 +130,19 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex lg:h-[100vh]">
+    <div className="flex lg:h-full">
       <div className="bg-blue-600 w-[100%] flex p-2 max-[769px]:hidden flex-col">
-        <h1 className="text-white font-bold mt-2 ml-10">MedGet</h1>
-        <div className="flex justify-center mt-25">
+        {/* <h1 className="text-white font-bold mt-2 ml-10">MedGet</h1> */}
+        <div className='w-full flex justify-center mt-14 cursor-pointer'
+        onClick={() => Nav('/')}
+        >
+          <img 
+            className='w-45'
+          src={medGetWhiteLogo} alt="Medget Logo" />
+        </div>
+
+
+        <div className="flex justify-center mt-4">
           <img
             className="transform scale-x-[-1]"
             src={signupSvg}

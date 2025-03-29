@@ -35,6 +35,7 @@ import PharmacyHomeDashboard from '../pages/pharmacy/PharmacyDashboardHome'
 import MedicineDetails from '../pages/pharmacy/MedicineDetails'
 import LocationPage from '../pages/pharmacy/LocationSetting'
 import PharmacyPrivateRouting from '../pages/pharmacy/PharmacyPrivateRouting'
+import LocationSettings from '../pages/users/LocationSettings'
 
 const router = createBrowserRouter([
     {
@@ -130,6 +131,10 @@ const router = createBrowserRouter([
                             {
                                 path: "password",
                                 element: <PasswordSettings />
+                            },
+                            {
+                                path: "location",
+                                element: <LocationSettings />
                             }
                         ]
                     },

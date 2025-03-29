@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const pharmacySlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:7399/api/pharmacies',
+    baseUrl: import.meta.env.VITE_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().medGet.token; // Get token from Redux state
       if (token) {
@@ -17,7 +17,7 @@ export const pharmacySlice = createApi({
   endpoints: (builder) => ({
     registerPharmacy: builder.mutation({
       query: (pharmacyData) => ({
-        url: '/register',
+        url: 'pharmacies/register',
         method: 'POST',
         body: pharmacyData,
       }),
@@ -32,7 +32,7 @@ export const pharmacySlice = createApi({
 
     loginPharmacy: builder.mutation({
       query: (loginData) => ({
-        url: '/login',
+        url: 'pharmacies/login',
         method: 'POST',
         body: loginData,
       }),
@@ -40,7 +40,7 @@ export const pharmacySlice = createApi({
 
     resendVerificationEmail: builder.mutation({
       query: (emailData) => ({
-        url: '/resend-verification-email',
+        url: 'pharmacies/resend-verification-email',
         method: 'POST',
         body: emailData,
       }),
