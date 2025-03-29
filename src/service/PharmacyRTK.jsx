@@ -25,7 +25,7 @@ export const pharmacySlice = createApi({
 
     verifyPharmacy: builder.query({
       query: (token) => ({
-        url: `/pharm-verify?token=${token}`,
+        url: `pharmacies/pharm-verify?token=${token}`,
         method: 'GET',
       }),
     }),
