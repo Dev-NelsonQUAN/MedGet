@@ -27,6 +27,14 @@ import AdminDashboardPharm from '../pages/admin/AdminDashboardPharm'
 import AdminDashboardLayout from '../pages/admin/AdminDashboardLayout'
 import UserPrivateRouting from '../pages/users/UserPrivateRouting'
 import AdminLogin from '../pages/auth/AdminLogin'
+import MedicineManagement from '../pages/pharmacy/MedicineManagement'
+import AddMedicine from '../pages/pharmacy/Addmedicine'
+import PharmacyDashboardSetting from '../pages/pharmacy/Pharmacydashboardsetting'
+import PharmacyProfileSettings from '../pages/pharmacy/ProfileSetting'
+import PharmacyHomeDashboard from '../pages/pharmacy/PharmacyDashboardHome'
+import MedicineDetails from '../pages/pharmacy/MedicineDetails'
+import LocationPage from '../pages/pharmacy/LocationSetting'
+import PharmacyPrivateRouting from '../pages/pharmacy/PharmacyPrivateRouting'
 
 const router = createBrowserRouter([
     {
@@ -131,20 +139,49 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "/pharmacy-dashboard",
-        element: <PharmacyDashboard />,
+        element: <PharmacyPrivateRouting />,
         children: [
             {
-                index: true,
-                element: <UserdashboardMedicine />
+                path: "/pharmacy-dashboard",
+                element: <PharmacyDashboard />,
+                children: [
+                    {
+                        index: true,
+                        element: <PharmacyHomeDashboard />
+                    },
+                    {
+                        path: 'medicine-page',
+                        element: <MedicineManagement />,
+                        children: [
+                            {
+                                path: 'add-medicine',
+                                element: <AddMedicine />
+                            },
+                            {
+                                path: 'medicine-details/:id',
+                                element: <MedicineDetails />
+                            }
+                        ]
+                    },
+                    {
+                        path: "settings",
+                        element: <PharmacyDashboardSetting />,
+                        children: [
+                            {
+                                path: 'pharmacy-profile',
+                                element: <PharmacyProfileSettings />
+                            },
+                            {
+                                path: 'pharmacy-location',
+                                element: <LocationPage />
+                            }
+                        ]
+                    }
+
+                ]
+
             },
-            {
-                path: "settings",
-                element: <UserDashboardSetting />
-            }
-
         ]
-
     },
     {
         path: "*",
