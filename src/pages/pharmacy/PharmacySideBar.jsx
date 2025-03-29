@@ -1,26 +1,24 @@
 import React from 'react';
 import {
     FaHome,
-    FaHospital,
     FaCog,
-    FaStore,
+    FaPowerOff
 } from 'react-icons/fa';
 import { GiMedicines } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { IoClose } from 'react-icons/io5';
+import logo from '../../assets/MedgetLogoNoBG2.png'
 
 const PharmacySideBar = ({ toggleSidebar }) => {
     const sideBarData = [
-        { title: 'Dashboard', icon: <FaHome />, link: '/user-dashboard/home' },
-        { title: 'Pharmacies', icon: <FaStore />, link: '/user-dashboard/pharmacies' },
-        { title: 'Medicines', icon: <GiMedicines />, link: '/user-dashboard/medicines' },
-        { title: 'Hospitals', icon: <FaHospital />, link: '/user-dashboard/hospitals' },
-        { title: 'Settings', icon: <FaCog />, link: '/user-dashboard/settings' },
+        { title: 'Dashboard', icon: <FaHome />, link: '/pharmacy-dashboard/home' },
+        { title: 'Medicines', icon: <GiMedicines />, link: '/pharmacy-dashboard/medicine-page' },
+        { title: 'Settings', icon: <FaCog />, link: '/pharmacy-dashboard/settings' },
+        { title: 'Logout', icon: <FaPowerOff />, link: '/pharmacy-dashboard/settings' },
     ];
 
     return (
         <div className="w-64 h-full bg-blue-600 text-white flex flex-col relative">
-            {/* Close Button for small screens */}
             <button
                 onClick={toggleSidebar}
                 className="absolute top-4 right-4 text-white text-2xl lg:hidden"
@@ -29,7 +27,7 @@ const PharmacySideBar = ({ toggleSidebar }) => {
             </button>
 
             <div className="p-4 mt-10 lg:mt-4">
-                <h1 className="text-2xl font-bold mb-6">User Panel</h1>
+                <img src={logo} alt="" className='w-[120px] ml-2' />
 
                 <nav className="pt-4">
                     <ul className="list-none">

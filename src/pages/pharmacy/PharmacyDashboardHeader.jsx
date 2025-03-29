@@ -25,7 +25,7 @@ const PharmacyDashboardHeader = ({ toggleSidebar }) => {
                 </button>
                 <div>
                     <h2 className="text-lg font-semibold">
-                        Welcome, {firstName || 'User'}
+                        Welcome, {firstName || 'Pharmacy'}
                     </h2>
                     <p className="text-sm text-gray-200">Here's your dashboard overview.</p>
                 </div>
