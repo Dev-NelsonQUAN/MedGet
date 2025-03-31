@@ -98,6 +98,10 @@ const router = createBrowserRouter([
                 path: 'get-all-pharmacies',
                 element: <AdminDashboardPharm />
             },
+            {
+                path: "admin-details",
+                element: <AdminDetails />
+            }
         ]
     },
     {
@@ -109,7 +113,6 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        // path: '',
                         element: <UserDashboardHome />
                     },
                     {
