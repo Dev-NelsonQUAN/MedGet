@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ labelText, htmlFor, type, placeholder, border, outline, px, py, pl, rounded, w, p, bg, borderCol, icon, onChange,value, name }) => {
+const Input = ({ labelText, htmlFor, type, placeholder, border, outline, px, py, pl, mt, rounded, w, p, bg, borderCol, icon, onChange,value, name }) => {
   // console.log("Input component -  value", value)
   // console.log("Input component -  onChange", onChange)
 
@@ -11,7 +11,7 @@ const Input = ({ labelText, htmlFor, type, placeholder, border, outline, px, py,
         className='font-medium text-[18px] mb-2'>{labelText}</label>}
 
       <input
-        className={`${border} ${outline} ${px} ${py} ${pl} ${rounded} ${w} ${p} ${bg} ${borderCol}`}
+        className={`${border} ${outline} ${px} ${py} ${pl} ${rounded} ${w} ${p} ${bg} ${mt}  ${borderCol}`}
         type={type}
         onChange={onChange}
         name={name}
