@@ -36,7 +36,7 @@ const AdminDashboardHeader = ({toggleSidebar}) => {
             </div>
             {/* <div className="ml-0 sm:ml-4"> */}
                 <div className="bg-blue-600 rounded-full p-2 cursor-pointer"
-                onClick={() => Nav("/admin-dashboard/admin-details")} >
+                onClick={() => Nav("/admin-dash/admin-details")} >
                     <CgProfile className="text-white text-lg" />
                 </div>
             {/* </div> */}

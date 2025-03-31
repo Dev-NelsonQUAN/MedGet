@@ -13,13 +13,17 @@ import { clearUser } from '../../service/GlobalState';
 import { persistStore } from 'redux-persist';
 import store from '../../service/store';
 import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
+import { useDispatch } from 'react-redux';
 
 
 const UserSideBar = ({ toogleSidebar }) => {
+    const dispatch = useDispatch()
     const Nav = useNavigate()
+
     const handleLogout = () => {
         dispatch(clearUser())
         persistStore(store).purge['medGet']
+        Nav("/login")
     }
 
     const sideBarData = [
@@ -28,38 +32,11 @@ const UserSideBar = ({ toogleSidebar }) => {
             icon: <FaHome />,
             link: '/user-dashboard',
         },
-        // {
-        //     title: 'Pharmacies',
-        //     icon: <FaStore />,
-        //     link: '/user-dashboard/pharmacies',
-        // }, 
         {
-
-
             title: 'Medicines',
             icon: <GiMedicines />,
             link: '/user-dashboard/medicines',
         },
-        // {
-        //     title: 'Reports',
-        //     icon: <FaChartLine />,
-        //     link: '/userDashboard/reports',
-        // },
-        // {
-        //     title: 'Audit Logs',
-        //     icon: <FaClipboardList />,
-        //     link: '/userDashboard/auditlogs',
-        // },
-        // {
-        //     title: 'Hospitals',
-        //     icon: <FaHospital />,
-        //     link: '/user-dashboard/hospitals',
-        // },
-        // {
-        //     title: 'Documents',
-        //     icon: <FaFileAlt />,
-        //     link: '/user-dashboard/documents',
-        // },
         {
             title: 'Settings',
             icon: <FaCog />,
@@ -80,7 +57,6 @@ const UserSideBar = ({ toogleSidebar }) => {
             </button>
 
             <div className="px-4 lg:mt-8 max-[769px]:mt-4">
-                {/* <h1 className="text-2xl font-bold mb-6 cursor-pointer">User Panel</h1> */}
                 <div className='w-35 cursor-pointer pl-1.5' 
                 onClick={() => Nav("/")}
                 
