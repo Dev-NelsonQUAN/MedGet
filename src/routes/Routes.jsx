@@ -36,6 +36,7 @@ import MedicineDetails from '../pages/pharmacy/MedicineDetails'
 import LocationPage from '../pages/pharmacy/LocationSetting'
 import PharmacyPrivateRouting from '../pages/pharmacy/PharmacyPrivateRouting'
 import LocationSettings from '../pages/users/LocationSettings'
+import AdminDetails from '../pages/admin/AdminDetails'
 
 const router = createBrowserRouter([
     {
