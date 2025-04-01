@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const pharmacySlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_URL,
+    baseUrl: import.meta.env.VITE_BASE_URL || "http://localhost:7399/api",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().medGet.token; // Get token from Redux state
       if (token) {

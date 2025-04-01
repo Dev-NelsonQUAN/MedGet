@@ -151,7 +151,7 @@ const router = createBrowserRouter([
                 element: <PharmacyDashboard />,
                 children: [
                     {
-                        index: true,
+                        path: "home",
                         element: <PharmacyHomeDashboard />
                     },
                     {

@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import { useGetMedicinesQuery } from "../../service/MedicineRtk";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PharmacyHomeDashboard = () => {
-  const { data: medicines, isLoading } = useGetMedicinesQuery();
+  const { data: medicines, isLoading, refetch } = useGetMedicinesQuery();
   const navigate = useNavigate();
+  const location = useLocation(); 
+
+  useEffect(() => {
+    refetch();
+  }, [location.pathname, refetch]);
 
   const totalMedicines = medicines?.length || 0;
   const outOfStock = medicines?.filter(med => med.stock === 0).length || 0;
@@ -57,4 +63,3 @@ const PharmacyHomeDashboard = () => {
 };
 
 export default PharmacyHomeDashboard;
-
