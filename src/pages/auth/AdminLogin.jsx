@@ -4,17 +4,18 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
-import { useLoginAdminMutation } from '../../service/AdminRTK'; 
+import { useLoginAdminMutation } from '../../service/AdminRTK';
 import Input from '../../ui/Input';
 import Btn from "../../ui/Btn";
 import { FaEye } from 'react-icons/fa6';
 import { FaEyeSlash } from 'react-icons/fa';
 import Spinner from '../../ui/Spinner';
-import loginSvg from '../../assets/doctorvector.png'; 
+import loginSvg from '../../assets/doctorvector.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setError, setToken } from "../../service/GlobalState";
 import { persistStore } from 'redux-persist';
 import store, { persistor } from '../../service/store';
+import medGetWhiteLogo from '../../assets/MedgetLogoNoBG2.png';
 
 const AdminLogin = () => {
     const Nav = useNavigate();
@@ -35,17 +36,17 @@ const AdminLogin = () => {
         resolver: yupResolver(validationSchema),
     });
 
-    const [loginAdmin, { isLoading: isLoginLoading }] = useLoginAdminMutation(); 
+    const [loginAdmin, { isLoading: isLoginLoading }] = useLoginAdminMutation();
 
     const onSubmit = async (data) => {
         setLoading(true);
         try {
             const result = await loginAdmin(data).unwrap();
-            const { data: adminData, token } = result; 
-            
+            const { data: adminData, token } = result;
+
             dispatch(setUser(adminData));
             dispatch(setToken(token))
-            console.log('Redux State After Dispatch:', store.getState()); 
+            console.log('Redux State After Dispatch:', store.getState());
 
 
             persistStore(store).purge(['medGet']);
@@ -81,10 +82,16 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="flex lg:h-[100vh]">
-            <div className="bg-blue-600 w-[100%] flex p-2 max-[769px]:hidden flex-col">
-                <h1 className="text-white font-bold mt-2 ml-10">MedGet</h1>
-                <div className="flex justify-center mt-25">
+        <div className="flex lg:h-full">
+            <div className="bg-blue-600 w-[100%] flex max-[769px]:hiddenn flex-col">
+                <div
+                    className="w-full flex justify-center mt-15 cursor-pointer"
+                    onClick={() => Nav('/sign-up')}
+                >
+                    <img className="w-45" src={medGetWhiteLogo} alt="Medget Logo" />
+                </div>
+
+                <div className="flex justify-center mt-4">
                     <img
                         className="transform scale-x-[-1]"
                         src={loginSvg}

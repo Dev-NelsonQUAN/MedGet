@@ -192,7 +192,7 @@ const LocationSettings = () => {
             {isSuccess && <p className="text-green-500">Location updated successfully</p>} */}
 
             <Btn
-                btnText={isLoading ? 'Saving...' : 'Save Location'}
+                // btnText={isLoading ? 'Saving...' : 'Save Location'}
                 bg="bg-blue-500"
                 color="text-white"
                 px="px-4"
@@ -200,7 +200,7 @@ const LocationSettings = () => {
                 mt="mt-4"
                 hoverBg="hover:bg-blue-600"
                 onClick={handleSaveLocation}
-                disabled={isLoading}
+                // disabled={isLoading}
             />
         </div>
     );
