@@ -16,6 +16,7 @@ import { medicineSlice } from './MedicineRtk';
 import { pharmacySlice } from './PharmacyRTK'
 import { adminSlice } from "./AdminRTK";
 import { locationSlice } from './PharmacyLocationRTK'
+import { pharmacyProfileSlice } from './PharmacyProfileRTK'
 
 
 const persistConfig = {
@@ -36,6 +37,7 @@ const store = configureStore({
     [medicineSlice.reducerPath]: medicineSlice.reducer,
     [pharmacySlice.reducerPath]: pharmacySlice.reducer,
     [locationSlice.reducerPath]: locationSlice.reducer,
+    [pharmacyProfileSlice .reducerPath]: pharmacyProfileSlice.reducer,
   },
   middleware: (getAllMiddelware) =>
     getAllMiddelware({  serializableCheck: {
@@ -46,6 +48,7 @@ const store = configureStore({
       .concat(pharmacySlice.middleware)
       .concat(adminSlice.middleware) 
       .concat(locationSlice.middleware)
+      .concat(pharmacyProfileSlice.middleware)
 });
 
 export default store;

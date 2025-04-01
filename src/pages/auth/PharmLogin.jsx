@@ -42,16 +42,16 @@ const PharmLogin = () => {
         try {
             const response = await loginPharmacy(data).unwrap();
             
-            console.log("Login Response:", response); // Check API response structure
+            console.log("Login Response:", response);
     
-            const user = response.data; //  Extract user
-            const token = response.token; // 
+            const user = response.data; 
+            const token = response.token; 
             if (!token) {
                 throw new Error("Token not found in response");
             }
     
             dispatch(setUser(user)); 
-            dispatch(setToken(token)); //  Store token in Redux state
+            dispatch(setToken(token));
     
             Swal.fire({
                 title: 'Login Successful!',
@@ -60,7 +60,7 @@ const PharmLogin = () => {
                 confirmButtonText: 'OK',
             });
     
-            Nav('/pharmacy-dashboard'); 
+            Nav('/pharmacy-dashboard/home'); 
         } catch (err) {
             console.error('Login error:', err);
     
@@ -69,7 +69,7 @@ const PharmLogin = () => {
                 errorMessage = err.data.message;
             }
     
-            dispatch(setError(errorMessage)); //  Store error in Redux
+            dispatch(setError(errorMessage));
     
             Swal.fire({
                 title: 'Login Failed!',
