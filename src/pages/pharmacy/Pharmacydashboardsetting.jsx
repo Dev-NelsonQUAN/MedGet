@@ -16,14 +16,14 @@ const PharmacyDashboardSetting = () => {
                             Profile Settings
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link
                             to="/pharmacy-dashboard/settings/password-setting"
                             className={`block p-2 rounded ${location.pathname === '/pharmacy-dashboard/settings/password-setting' ? 'bg-blue-200' : ''}`}
                         >
                             Password Settings
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link
                             to="/pharmacy-dashboard/settings/pharmacy-location"

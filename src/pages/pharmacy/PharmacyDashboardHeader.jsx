@@ -7,15 +7,15 @@ import { useNavigate } from 'react-router-dom';
 const PharmacyDashboardHeader = ({ toggleSidebar }) => {
     const Nav = useNavigate();
     const user = useSelector((state) => state.medGet.user);
-    let firstName = '';
+    let pharmacyName = '';
 
-    if (user && user.fullname) {
-        const nameParts = user.fullname.split(' ');
-        firstName = nameParts[0];
+    if (user && user.pharmacyName) {
+        const nameParts = user.pharmacyName.split(' ');
+        pharmacyName = nameParts[0];
     }
 
     return (
-        <div className="w-full p-4 flex justify-between items-center bg-blue-500 text-white">
+        <div className="w-full p-4 flex justify-between items-center shadow-2xl  text-black">
             <div className="flex items-center">
                 <button
                     className="lg:hidden mr-4 text-white text-2xl"
@@ -25,14 +25,14 @@ const PharmacyDashboardHeader = ({ toggleSidebar }) => {
                 </button>
                 <div>
                     <h2 className="text-lg font-semibold">
-                        Welcome, {firstName || 'Pharmacy'}
+                        Welcome, {pharmacyName || 'Pharmacy'}
                     </h2>
-                    <p className="text-sm text-gray-200">Here's your dashboard overview.</p>
+                    <p className="lg:text-[16px] text-black max-[769px]:text-[14px] max-[576px]:text-[10px]">Here's your dashboard overview.</p>
                 </div>
             </div>
             <div
                 className="bg-blue-600 rounded-full p-2 cursor-pointer"
-                onClick={() => Nav('/user-dashboard/user-details')}
+                onClick={() => Nav('/pharmacy-dashboard/settings/pharmacy-profile')}
             >
                 <CgProfile className="text-white text-lg" />
             </div>

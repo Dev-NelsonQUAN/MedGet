@@ -28,7 +28,7 @@ const DeleteMedicine = () => {
                 expireDate: medicine.expireDate ? medicine.expireDate.split("T")[0] : "",
                 status: medicine.status || "",
                 details: medicine.details || "",
-                image: null, // Reset image field
+                image: null, 
             });
         }
     }, [medicine]);
@@ -46,7 +46,7 @@ const DeleteMedicine = () => {
 
     const confirmDelete = async () => {
         await deleteMedicine(id);
-        navigate("/pharmacy-dashboard/medicine-page/view");
+        navigate("/pharmacy-dashboard/home");
     };
 
     const confirmUpdate = async (e) => {
@@ -64,8 +64,8 @@ const DeleteMedicine = () => {
         }
 
         await updateMedicine({ id, formData });
-        refetch();
         setShowUpdateModal(false);
+        window.location.reload(); 
     };
 
     if (isLoading) return <p>Loading...</p>;
