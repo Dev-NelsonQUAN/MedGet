@@ -190,14 +190,14 @@ const PharmacyProfileSettings = () => {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="gender" className="block text-md font-medium">
                     Gender
                 </label>
                 <select
                     id="gender"
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
-                    className="block w-full mt-2 border-1 border-gray-300 outline-blue-200 rounded-md p-2"
+                    className="block w-full mt-1 border-1 border-gray-300 outline-blue-200 rounded-md p-2"
                 >
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
@@ -207,11 +207,14 @@ const PharmacyProfileSettings = () => {
             </div>
 
             <div className="mb-4">
+                <label htmlFor="bio" className="block text-md font-medium">
+                    Bio
+                </label>
                 <textarea
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                     placeholder="Enter your bio"
-                    className="border border-gray-300 outline-blue-200 rounded-md w-full p-2"
+                    className="border border-gray-300 mt-1 outline-blue-200 rounded-md w-full p-2"
                 />
             </div>
 
