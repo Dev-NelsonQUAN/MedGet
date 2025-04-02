@@ -4,7 +4,7 @@ export const pharmacySlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().medGet.token; // Get token from Redux state
+      const token = getState().medGet.token;
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
