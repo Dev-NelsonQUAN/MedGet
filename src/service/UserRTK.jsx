@@ -77,6 +77,9 @@ export const userSlice = createApi({
         getAllPharms: builder.query({
             query: () => 'user/getAllPharms',
         }),
+        getAllMedicines: builder.query({
+            query: () => 'user/getAllMedicines'
+        })
     }),
 });
 
@@ -89,6 +92,7 @@ export const {
     useUpdateUserPasswordMutation,
     useGetUserQuery,
     useGetAllPharmsQuery,
+    useGetAllMedicinesQuery
 } = userSlice;
 
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
