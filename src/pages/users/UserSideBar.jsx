@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { CgLogOff } from 'react-icons/cg';
 import {
     FaHome,
@@ -12,19 +12,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import { clearUser } from '../../service/GlobalState';
 import { persistStore } from 'redux-persist';
 import store from '../../service/store';
-import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
+import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png";
 import { useDispatch } from 'react-redux';
 
-
 const UserSideBar = ({ toggleSidebar }) => {
-    const dispatch = useDispatch()
-    const Nav = useNavigate()
+    const dispatch = useDispatch();
+    const Nav = useNavigate();
+    const [showLogoutModal, setShowLogoutModal] = useState(false); 
 
     const handleLogout = () => {
-        dispatch(clearUser())
-        persistStore(store).purge['medGet']
-        Nav("/login")
-    }
+        dispatch(clearUser());
+        persistStore(store).purge(['medGet']);
+        Nav("/login");
+        setShowLogoutModal(false);
+    };
+
+    const confirmLogout = () => {
+        setShowLogoutModal(true);
+    };
 
     const sideBarData = [
         {
@@ -45,8 +50,8 @@ const UserSideBar = ({ toggleSidebar }) => {
         {
             title: 'Logout',
             icon: <CgLogOff />,
-            action: handleLogout
-        }
+            action: confirmLogout, 
+        },
     ];
 
     return (
@@ -57,13 +62,11 @@ const UserSideBar = ({ toggleSidebar }) => {
             </button>
 
             <div className="px-4 lg:mt-8 max-[769px]:mt-4">
-                <div className='w-35 cursor-pointer pl-1.5' 
-                onClick={() => Nav("/")}
-                
+                <div className='w-35 cursor-pointer pl-1.5'
+                    onClick={() => Nav("/")}
                 >
-                    <img 
-                    // className='object-full'
-                    src={medGetWhiteLogo} alt="MedGet Logo" />
+                    <img
+                        src={medGetWhiteLogo} alt="MedGet Logo" />
                 </div>
 
                 <nav className="pt-6">
@@ -73,30 +76,51 @@ const UserSideBar = ({ toggleSidebar }) => {
                                 key={index}
                                 className="pl-4 py-3.5 hover:bg-white hover:text-blue-600 rounded-md cursor-pointer"
                             >
-                                {
-                                    item.action ?
-                                        (
-                                            <div
-                                                className="flex items-center"
-                                                onClick={item.action}
-                                            >
-                                                <span className="mr-2">{item.icon}</span>
-                                                <span>{item.title}</span>
-                                            </div>
-                                        ) : (
-
-                                            <Link to={item.link} className="flex items-center">
-                                                <span className="mr-2">{item.icon}</span>
-                                                <span>{item.title}</span>
-                                            </Link>
-                                        )}
+                                {item.action ?
+                                    (
+                                        <div
+                                            className="flex items-center"
+                                            onClick={item.action}
+                                        >
+                                            <span className="mr-2">{item.icon}</span>
+                                            <span>{item.title}</span>
+                                        </div>
+                                    ) : (
+                                        <Link to={item.link} className="flex items-center">
+                                            <span className="mr-2">{item.icon}</span>
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    )}
                             </li>
                         ))}
                     </ul>
                 </nav>
             </div>
-        </div>
-    )
-}
 
-export default UserSideBar
+            {/* Logout Modal */}
+            {showLogoutModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-md shadow-lg text-black">
+                        <p className="text-lg font-semibold mb-4">Are you sure you want to logout?</p>
+                        <div className="flex justify-end">
+                            <button
+                                className="bg-gray-300 px-4 py-2 rounded-md mr-2"
+                                onClick={() => setShowLogoutModal(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="bg-red-600 text-white px-4 py-2 rounded-md"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default UserSideBar;
