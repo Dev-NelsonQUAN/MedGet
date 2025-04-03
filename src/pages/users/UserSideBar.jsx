@@ -16,7 +16,7 @@ import medGetWhiteLogo from "../../assets/MedgetLogoNoBG2.png"
 import { useDispatch } from 'react-redux';
 
 
-const UserSideBar = ({ toogleSidebar }) => {
+const UserSideBar = ({ toggleSidebar }) => {
     const dispatch = useDispatch()
     const Nav = useNavigate()
 
@@ -52,7 +52,7 @@ const UserSideBar = ({ toogleSidebar }) => {
     return (
         <div className="lg:w-65 h-full bg-blue-600 text-white flex flex-col relative">
             <button className='absolute top-4 right-4 text-white text-2xl lg:hidden'
-                onClick={toogleSidebar}>
+                onClick={toggleSidebar}>
                 <IoClose />
             </button>
 
