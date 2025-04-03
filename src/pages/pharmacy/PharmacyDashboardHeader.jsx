@@ -18,7 +18,7 @@ const PharmacyDashboardHeader = ({ toggleSidebar }) => {
         <div className="w-full p-4 flex justify-between items-center shadow-2xl  text-black">
             <div className="flex items-center">
                 <button
-                    className="lg:hidden mr-4 text-white text-2xl"
+                    className="lg:hidden mr-4 text-black text-2xl"
                     onClick={toggleSidebar}
                 >
                     <FaBars />
