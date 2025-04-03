@@ -91,7 +91,7 @@ const SignUp = () => {
         if (err && err.data && err.data.message && err.data.message.includes('already exists')) {
           errorMessage = 'Email address is already in use.';
         } else {
-          errorMessage = 'Error during signup.'; // General error for 409
+          errorMessage = 'Error during signup.'
         }
         Swal.fire({
           title: 'Error!',
