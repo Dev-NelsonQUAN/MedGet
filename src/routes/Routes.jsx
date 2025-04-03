@@ -37,6 +37,7 @@ import LocationPage from '../pages/pharmacy/LocationSetting'
 import PharmacyPrivateRouting from '../pages/pharmacy/PharmacyPrivateRouting'
 import LocationSettings from '../pages/users/LocationSettings'
 import AdminDetails from '../pages/admin/AdminDetails'
+import UserDetails from '../pages/users/UserDetails'
 
 const router = createBrowserRouter([
     {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
                     {
                         path: "medicines",
                         element: <UserdashboardMedicine />
+                    },
+                    {
+                        path: ":userId",
+                        element: <UserDetails />
                     },
                     {
                         path: "user-details",
