@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux';
 const UserSideBar = ({ toggleSidebar }) => {
     const dispatch = useDispatch();
     const Nav = useNavigate();
-    const [showLogoutModal, setShowLogoutModal] = useState(false); 
+    const [showLogoutModal, setShowLogoutModal] = useState(false);
 
     const handleLogout = () => {
         dispatch(clearUser());
@@ -50,7 +50,7 @@ const UserSideBar = ({ toggleSidebar }) => {
         {
             title: 'Logout',
             icon: <CgLogOff />,
-            action: confirmLogout, 
+            action: confirmLogout,
         },
     ];
 
@@ -97,10 +97,9 @@ const UserSideBar = ({ toggleSidebar }) => {
                 </nav>
             </div>
 
-            {/* Logout Modal */}
             {showLogoutModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                    <div className="bg-white p-6 rounded-md shadow-lg text-black">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-6 rounded-md shadow-lg text-black w-full max-w-md"> 
                         <p className="text-lg font-semibold mb-4">Are you sure you want to logout?</p>
                         <div className="flex justify-end">
                             <button
