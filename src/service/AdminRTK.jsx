@@ -5,10 +5,6 @@ export const adminSlice = createApi({
         baseUrl: import.meta.env.VITE_BASE_URL,
         prepareHeaders: (headers, { getState }) => {
             const token = getState()?.medGet?.token;
-            // const tokenTwo = getState()?.medGet?.action;
-
-            console.log("ReduxToken", token)
-            // console.log("Action", tokenTwo)
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`)
@@ -37,28 +33,13 @@ export const adminSlice = createApi({
         getAllUsers: builder.query({
             query: () => 'admin/getAllUsers'
             }),
-        // }),
-
-        // getAllUsers: builder.query({
-        //     query: (token) => ({
-        //         url: '/getAllUsers',
-        //         method: 'GET',
-        //         token
-        //     })
-        // }),
         getAllPharmacies: builder.query({
             query: () => 'admin/getAllPharmacies',
-            })
-        // }),
-        
-        // getAllPharmacies: builder.query({
-        //     query: (token) => ({
-        //         url: '/getAllPharmacies',
-        //         method: 'GET',
-        //         token
-        //     })
-        // }),
-        
+            }),
+        VerifyPharmacy: builder.mutation({
+            query: () => 'admin/verifyPharm',
+
+        })
     }),
 })
 
@@ -66,5 +47,7 @@ export const {
     useSignUpAdminMutation,
     useLoginAdminMutation,
     useGetAllUsersQuery,
-    useGetAllPharmaciesQuery
+    useGetAllPharmaciesQuery,
+    useVerifyPharmacyMutation
+
 } = adminSlice

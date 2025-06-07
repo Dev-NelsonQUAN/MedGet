@@ -328,14 +328,15 @@ const LandingPage = () => {
         <h2 className="lg:text-2xl max-[796px]:text-2xl max-[576px]:text-[14px] font-bold lg:mb-4 max-[769px]:mb-4 max-[576px]:mb-1">Join MedGet Today!</h2>
       </section>
 
-      <footer className="bg-blue-950 text-white lg:py-8 max-[769px]:py-8 max-[576px]:py-6">
-        <div className=" mx-auto px-4 md:px-11 lg:px-25 xl:px-25 ">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <footer className="bg-blue-950 text-white lg:py-8 max-[769px]:py-8 max-[576px]:py-6 max-[321px]:py-4">
+        <div className="mx-auto px-4 md:px-11 lg:px-25 xl:px-25 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-8 max-[769px]:gap-6 max-[321px]:gap-4">
             <div className="text-center md:text-left flex flex-col items-center md:items-start">
               <img src={footerlogo} className="lg:w-[140px] max-[769px]:w-[140px] max-[576px]:w-[80px]" alt="Footer Logo" />
               <p className="mt-2 max-w-xs text-center md:text-left max-[576px]:text-[13px]">
                 Your trusted pharmacy locator & stock management system.
               </p>
+
               <div className="flex gap-4 mt-4 justify-center md:justify-start">
                 <FaFacebookF className="lg:text-xl max-[769px]:text-xl max-[576px]:text-[14px] cursor-pointer" />
                 <FaTwitter className="lg:text-xl max-[769px]:text-xl max-[576px]:text-[14px] cursor-pointer" />
@@ -346,8 +347,8 @@ const LandingPage = () => {
             </div>
 
             <div className="text-center md:text-left">
-              <h3 className="text-lg font-semibold ">Company</h3>
-              <ul className="mt-2 lg:space-y-3.5 max-[769px]:space-y-3.5 max-[576px]:space-y-2">
+              <h3 className="lg:text-lg max-[769px]:text-lg max-[321px]:text-[14px] font-semibold">Company</h3>
+              <ul className="mt-2 lg:space-y-3.5 max-[769px]:space-y-3.5 max-[576px]:space-y-2 max-[321px]:spaxe-y-1">
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">About Us</li>
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">Careers</li>
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">Articles & News</li>
@@ -356,8 +357,8 @@ const LandingPage = () => {
             </div>
 
             <div className="text-center md:text-left">
-              <h3 className="text-lg font-semibold ">Support</h3>
-              <ul className="mt-2 lg:space-y-3.5 max-[769px]:space-y-3.5 max-[576px]:space-y-2">
+              <h3 className="lg:text-lg max-[769px]:text-lg max-[321px]:text-[14px] font-semibold">Support</h3>
+              <ul className="mt-2 lg:space-y-3.5 max-[769px]:space-y-3.5 max-[576px]:space-y-2 max-[321px]:spaxe-y-1">
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">Help Center</li>
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">My Account</li>
                 <li className="hover:underline cursor-pointer max-[576px]:text-[13px]">FAQ</li>
@@ -366,13 +367,11 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="text-center mt-8 border-t border-gray-700 lg:pt-8 max-[769px]:pt-8 max-[576px]:pt-6 text-sm">
+          <div className="text-center lg:mt-8 max-[769px]:mt-8 max-[576px]:mt-8 max-[321px]:mt-4 border-t border-gray-700 lg:pt-8 max-[769px]:pt-8 max-[576px]:pt-4 lg:text-sm max-[769px]:text-sm max-[576px]:text-[10px]">
             &copy; {new Date().getFullYear()} MedGet. All rights reserved.
           </div>
         </div>
       </footer>
-
-
     </div>
   );
 };

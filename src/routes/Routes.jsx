@@ -2,9 +2,7 @@ import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import SignUp from '../pages/auth/SignUp'
 import Login from '../pages/auth/Login'
-import AdminDashboard from '../layout/AdminDashboardLayout'
 import PharmacyDashboard from '../layout/PharmacyDashboardLayout'
-import DashboardHome from '../components/DashboardHome'
 import UserDashboardHome from '../pages/users/UserDashboardHome'
 import LandingPage from "../pages/Landing/LandingPage"
 import SelectionPage from "../pages/Landing/SelectionPage"
