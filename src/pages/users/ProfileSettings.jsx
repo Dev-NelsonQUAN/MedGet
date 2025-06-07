@@ -17,10 +17,6 @@ const ProfileSettings = () => {
 
     const [updateUserProfile, { isLoading, isError, error, isSuccess }] = useUpdateUserProfileMutation();
 
-    // console.log(updateUserProfile)
-    console.log(isError)
-    console.log(error)
-
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
         setProfilePicture(file);

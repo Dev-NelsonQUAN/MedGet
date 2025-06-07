@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PharmacySideBar from './UserSideBar';
 import UserDashboardHeader from './UserDashboardHeader';
 import UserSideBar from './UserSideBar';
 import { Outlet } from 'react-router-dom';
