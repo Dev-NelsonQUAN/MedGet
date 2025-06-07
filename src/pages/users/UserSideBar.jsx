@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { CgLogOff } from 'react-icons/cg';
 import {
     FaHome,
-    FaHospital,
     FaCog,
-    FaStore,
 } from 'react-icons/fa';
 import { GiMedicines } from 'react-icons/gi';
 import { IoClose } from 'react-icons/io5';

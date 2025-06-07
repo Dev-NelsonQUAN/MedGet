@@ -1,5 +1,4 @@
 import React from 'react';
-import { useGetMedicinesQuery } from '../../service/MedicineRtk';
 import { useGetAllMedicinesQuery } from '../../service/UserRTK';
 
 const UserDashboardMedicine = () => {
